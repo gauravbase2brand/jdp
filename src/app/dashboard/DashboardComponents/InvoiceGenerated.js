@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Invoiceicon from '../../../public/images/icons/Invoice Generated icons.svg';
+import Invoiceicon from '../../../../public/images/icons/Invoice Generated icons.svg';
 import { SlRefresh } from 'react-icons/sl';
-import invoiceadmin from '../../../public/images/icons/invoiceadmin.svg';
-import Intuit_QuickBooks from '../../../public/images/icons/Intuit_QuickBooks.svg';
+import invoiceadmin from '../../../../public/images/icons/invoiceadmin.svg';
+import Intuit_QuickBooks from '../../../../public/images/icons/Intuit_QuickBooks.svg';
 
 const InvoiceGenerated = () => {
 const [isRotating, setIsRotating] = useState(false);
@@ -13,7 +13,7 @@ const rotateIcon = () => {
   setIsRotating(prev => !prev);
 };
   return (
-    <div className="mx-auto flex max-w-3xl items-center justify-between rounded-xl bg-white p-6 shadow-md">
+    <div className=" flex items-center justify-between rounded-xl bg-white p-6 shadow-md">
       {/* Left Content */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
