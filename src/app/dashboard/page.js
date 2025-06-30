@@ -1,13 +1,11 @@
-import React from 'react'
-import DashBoardpage from './DashBoardpage'
+import Sidebar from '@/components/layout/Sidebar'
+import DashboardPageContent from './DashBoardpage'  // or wherever your component lives
 
+export default function DashboardHome() {
+  return(
+<>
 
-const page = () => {
-  return (
-    <div>
-      <DashBoardpage/>
-    </div>
+ <DashboardPageContent />
+</>
   )
 }
-
-export default page
