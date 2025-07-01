@@ -7,11 +7,13 @@ import { FiBarChart2, FiUser, FiSettings, FiBell, FiBriefcase, FiDollarSign, FiB
 import logofirst from '../../../public/images/logofirst.svg';
 import Image from 'next/image';
 import adminuser from '../../../public/images/icons/admin user.svg'; // Update this path as per your directory
-// your full menu definition
+import { GrHomeRounded } from "react-icons/gr";
+import { BiUser } from "react-icons/bi";
+
 const menuItems = [
   {
     label: 'Analytics',
-    icon: <FiBarChart2 />,
+    icon: <GrHomeRounded />,
     children: [
       { label: 'Financial Overview', href: '/analytics/finance', icon: <FiDollarSign /> },
       { label: 'Jobs overview',       href: '/analytics/jobs',    icon: <FiBriefcase /> },
@@ -20,7 +22,7 @@ const menuItems = [
   },
   {
     label: 'User',
-    icon: <FiUser />,
+    icon: <BiUser />,
     children: [
       { label: 'All',        href: '/users/all',       icon: <FiUsers /> },
       { label: 'Staff',      href: '/users/staff',     icon: <FiUserPlus /> },
@@ -29,7 +31,17 @@ const menuItems = [
       { label: 'Supplier',   href: '/users/suppliers', icon: <FiPackage /> },
     ],
   },
-  
+    {
+    label: 'User',
+    icon: <BiUser />,
+    children: [
+      { label: 'All',        href: '/users/all',       icon: <FiUsers /> },
+      { label: 'Staff',      href: '/users/staff',     icon: <FiUserPlus /> },
+      { label: 'Lead Labor', href: '/users/lead-labor',icon: <FiUserCheck /> },
+      { label: 'Labor',      href: '/users/labor',      icon: <FiUser /> },
+      { label: 'Supplier',   href: '/users/suppliers', icon: <FiPackage /> },
+    ],
+  },
 
 ];
 
@@ -75,7 +87,7 @@ export default function Sidebar() {
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'}
               `}
             >
-              {React.cloneElement(item.icon, { className: 'h-6 w-6' })}
+              {React.cloneElement(item.icon, { className: 'h-6 w-6 ' })}
             </button>
           ))}
       </div>
@@ -107,7 +119,7 @@ export default function Sidebar() {
                   href={child.href || '#'}
                   className="flex items-center px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
-                  {child.icon && React.cloneElement(child.icon, { className: 'h-5 w-5 text-gray-500 dark:text-gray-400' })}
+                  {child.icon && React.cloneElement(child.icon, { className: 'h-6 w-6 text-gray-500 dark:text-gray-400' })}
                   <span className="ml-3">{child.label}</span>
                 </Link>
               </li>
