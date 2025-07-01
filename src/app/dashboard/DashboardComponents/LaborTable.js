@@ -2,16 +2,76 @@ import React from 'react';
 
 const LaborTable = () => {
   const laborData = [
-    { employee: 'John Carter', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Assigned' },
-    { employee: 'Maria', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'In Progress' },
-    { employee: 'Alex', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Completed' },
-    { employee: 'David', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Delayed' },
-    { employee: 'Kevin', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Assigned' },
-    { employee: 'Samuel', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Completed' },
-    { employee: 'Samuel', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Completed' },
-    { employee: 'Samuel', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Completed' },
-    { employee: 'Samuel', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Completed' },
-    { employee: 'Samuel', task: 'Electrical Wiring', project: 'Site A', shiftTime: '8:00 AM - 4:00 PM', status: 'Completed' },
+    {
+      employee: 'John Carter',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Assigned',
+    },
+    {
+      employee: 'Maria',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'In Progress',
+    },
+    {
+      employee: 'Alex',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Completed',
+    },
+    {
+      employee: 'David',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Delayed',
+    },
+    {
+      employee: 'Kevin',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Assigned',
+    },
+    {
+      employee: 'Samuel',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Completed',
+    },
+    {
+      employee: 'Samuel',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Completed',
+    },
+    {
+      employee: 'Samuel',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Completed',
+    },
+    {
+      employee: 'Samuel',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Completed',
+    },
+    {
+      employee: 'Samuel',
+      task: 'Electrical Wiring',
+      project: 'Site A',
+      shiftTime: '8:00 AM - 4:00 PM',
+      status: 'Completed',
+    },
   ];
 
   const getStatusClass = (status) => {
@@ -30,14 +90,18 @@ const LaborTable = () => {
   };
 
   return (
-    <div className="overflow-x-auto shadow-lg rounded-lg">
-      <table className="min-w-full table-auto bg-white border border-gray-300">
+    <div className="overflow-x-auto rounded-lg shadow-lg">
+      <table className="min-w-full table-auto border border-gray-300 bg-white">
         <thead className="bg-gray-100 text-gray-700">
           <tr>
-            <th className="px-6 py-3 text-left text-sm font-medium">Employee</th>
+            <th className="px-6 py-3 text-left text-sm font-medium">
+              Employee
+            </th>
             <th className="px-6 py-3 text-left text-sm font-medium">Task</th>
             <th className="px-6 py-3 text-left text-sm font-medium">Project</th>
-            <th className="px-6 py-3 text-left text-sm font-medium">Shift Time</th>
+            <th className="px-6 py-3 text-left text-sm font-medium">
+              Shift Time
+            </th>
             <th className="px-6 py-3 text-left text-sm font-medium">Status</th>
           </tr>
         </thead>
@@ -48,7 +112,9 @@ const LaborTable = () => {
               <td className="px-6 py-4 text-sm">{labor.task}</td>
               <td className="px-6 py-4 text-sm">{labor.project}</td>
               <td className="px-6 py-4 text-sm">{labor.shiftTime}</td>
-              <td className={`px-6 py-4 text-sm ${getStatusClass(labor.status)}`}>
+              <td
+                className={`px-6 py-4 text-sm ${getStatusClass(labor.status)}`}
+              >
                 {labor.status}
               </td>
             </tr>

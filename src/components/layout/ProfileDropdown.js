@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import { FiBell, FiSettings, FiUser, FiPackage } from 'react-icons/fi';
+import { FaUser } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+
 import Image from 'next/image';
 import adminuser from '../../../public/images/icons/admin user.svg'; // Update this path as per your directory
 import Link from 'next/link';
+
+
 
 const ProfileDropdown = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,9 +47,9 @@ const ProfileDropdown = () => {
         {menuOpen && (
           <div
             tabIndex={0}
-            className="dropdown-content menu rounded-lg absolute top-[40px] right-0 z-[1] w-80 bg-white p-2 shadow"
+            className="dropdown-content menu absolute top-[40px] right-0 z-[1] w-80 rounded-lg bg-white p-2 shadow"
           >
-            <div className=" rounded-lg p-3 drop-shadow-xl">
+            <div className="rounded-lg p-3 ">
               {/* User Information Section */}
 
               <div className="flex justify-between pb-3">
@@ -60,22 +64,57 @@ const ProfileDropdown = () => {
 
               {/* Notifications Section */}
               <div className="py-2">
-               <nav className="grid gap-1">
-  <div className="flex justify-between items-center">
-    <div className='flex gap-2'>
-      <FiBell className="h-7 w-7 text-pink-500" />
-      <span>Event Today</span>
-    </div>
-    <span className="text-xs">9:15 AM</span>
-  </div>
-</nav>
+                <nav className="grid gap-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-2 items-center">
+                      <div className='p-3 bg-[#FFE2EA] rounded-full'>
+                    <FaUser className="h-6 w-6  text-pink-500" />
+
+                      </div>
+                    <div className='flex flex-col'>
+                        <span className='text-sm font-semibold'>Event Today</span>
+                        <span className='text-[14px] text-[#111827]'>You can customize this</span>
+                    </div>
+                    </div>
+                    <span className="text-xs">9:15 AM</span>
+                  </div>
+
+                  {/*  */}
+                   <div className="flex items-center justify-between">
+                    <div className="flex gap-2 items-center">
+                      <div className='p-3 bg-[#DFF3FF] rounded-full'>
+                 <IoMdSettings  className="h-6 w-6  text-[#15A9FF]" />
+
+                      </div>
+                    <div className='flex flex-col'>
+                        <span className='text-sm font-semibold'>Setting</span>
+                        <span className='text-[14px] text-[#111827]'>You can customize this</span>
+                    </div>
+                    </div>
+                    <span className="text-xs">9:15 AM</span>
+                  </div>
+
+                       <div className="flex items-center justify-between">
+                    <div className="flex gap-2 items-center">
+                      <div className='p-3 bg-[#FFF5DA] rounded-full'>
+                    <FaUser className="h-6 w-6  text-[#FFC11B]" />
+
+                      </div>
+                    <div className='flex flex-col'>
+                        <span className='text-sm font-semibold'>Launch Admin</span>
+                        <span className='text-[14px] text-[#111827]'>You can customize this</span>
+                    </div>
+                    </div>
+                    <span className="text-xs">9:15 AM</span>
+                  </div>
+                </nav>
               </div>
 
               {/* See All Notifications Button */}
               <div className="pt-2">
                 <button
                   type="button"
-                  className="p-2 rounded-full w-full border-full border-[#00A1FF] border-1 bg-[#00a2ff42] text-[#00A1FF]"
+                  className="border-full font-semibold w-full rounded-full border-1 border-[#00A1FF] hover:bg-[#00a2ff42] p-2 text-[#00A1FF]"
                 >
                   <span>See All Notifications</span>
                 </button>

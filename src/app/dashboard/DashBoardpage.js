@@ -20,7 +20,7 @@ const DashBoardpage = () => {
       </div>
 
     
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_5fr]">
+      <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[1fr_5fr] xl:grid-cols-[2fr_5fr]">
         <div className="lg:grid-row-2 grid grid-cols-1 gap-6">
           <TimesheetChart />
           <DonutChartCard />

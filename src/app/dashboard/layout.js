@@ -6,7 +6,7 @@ export default function DashboardLayout({ children }) {
     <>
       <div className="flex h-full">
         {/* Sidebar */}
-        <aside className="w-72 relative">
+        <aside className="2xl:w-82 xl:w-80 w-auto relative">
           <Sidebar />
         </aside>
 
