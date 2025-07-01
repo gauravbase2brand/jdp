@@ -24,7 +24,7 @@ import BriefcaseIcon from '../../../public/images/briefcase.svg';
 
 const menuItems = [
   {
-    label: 'Dashbord',
+    label: 'Dashboard',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +314,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '/Dashboard/analytics/finance',
+        href: '/dashboard/all',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -864,7 +864,7 @@ export default function Sidebar() {
     <>
       <div className="flex h-screen">
         <div
-          className={`p-3' absolute top-4 z-10 ${menuOpen ? 'right-[-86px]' : 'left-[90px]'} `}
+          className={`p-3' absolute top-10 z-10 ${menuOpen ? 'right-[-86px]' : 'left-[90px]'} `}
         >
           <button onClick={toggleMenu}>
             {menuOpen ? (
@@ -879,7 +879,7 @@ export default function Sidebar() {
           </button>
         </div>
 
-        <nav className="flex w-20 flex-col items-center justify-between border-r border-gray-200 bg-white p-3 py-4 dark:border-gray-700 dark:bg-gray-800">
+        <nav className="flex w-20 flex-col items-center justify-between border-r border-gray-200 bg-white p-3 py-4 ">
           <div className="flex flex-col items-center justify-center space-y-4">
             {/* logo */}
             <Image src={logofirst} alt="Logo" className="mx-auto h-8 w-auto" />

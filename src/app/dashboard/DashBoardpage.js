@@ -11,7 +11,7 @@ import Otp from '@/components/ui/Otp';
 const DashBoardpage = () => {
   return (
 <div className='mt-4'>
-      <div className="container mx-auto space-y-6 p-6">
+      <div className="container mx-auto space-y-6">
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[3fr_2fr_2fr]">
         <InvoiceGenerated />
