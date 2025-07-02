@@ -2,7 +2,7 @@
 
 import Welcome from '@/components/layout/Welcome';
 import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
+import Input from '@/components/ui/InputFiels';
 import React from 'react';
 import { CiMail } from 'react-icons/ci';
 
@@ -22,7 +22,7 @@ const LoginMain = () => {
           Verify your email or phone to continue setting up securely.
         </p>
         <form className="space-y-4">
-          <Input
+          <Input placeholder="Enter your email/ phone number"
             InputLabl=" Email/Phone Number"
             isRequiredLabel={true}
             InputType="text"

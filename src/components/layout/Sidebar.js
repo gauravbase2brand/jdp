@@ -332,7 +332,7 @@ const menuItems = [
       },
       {
         label: 'Staff',
-        href: '/Dashboard/analytics/finance',
+        href: '/dashboard/Staff',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -864,9 +864,9 @@ export default function Sidebar() {
     <>
       <div className="flex h-screen">
         <div
-          className={`p-3' absolute top-10 z-10 ${menuOpen ? 'right-[-86px]' : 'left-[90px]'} `}
+          className={`p-3' absolute top-10 z-20 ${menuOpen ? 'right-[-86px] z-20' : 'left-[90px]'} `}
         >
-          <button onClick={toggleMenu}>
+          <button onClick={toggleMenu} className=''>
             {menuOpen ? (
               <>
                 <RxCross1 className="cursor-pointer" fontSize={25} />
@@ -890,10 +890,10 @@ export default function Sidebar() {
                 <button
                   key={item.label}
                   onClick={() => setActiveSection(item.label)}
-                  className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition ${
+                  className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105  ${
                     activeSection === item.label
-                      ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF] dark:bg-blue-900 dark:text-blue-400'
-                      : 'text-gray-60sNamver:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700'
+                      ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]  '
+                      : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
                   } `}
                 >
                   {React.cloneElement(item.icon, { className: 'h-6 w-6 ' })}
@@ -914,7 +914,7 @@ export default function Sidebar() {
 
         {menuOpen && (
           <>
-            <aside className="flex flex-1 flex-col border-l border-gray-200 bg-white">
+            <aside className="flex flex-1 flex-col border-l border-gray-200 bg-white w-[250px]">
               {/* header */}
               <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
                 {current.label}
@@ -922,7 +922,7 @@ export default function Sidebar() {
 
               {/* child links */}
               <nav className="overflow-y-auto">
-                <ul className="mt-2 space-y-1">
+                <ul className="flex flex-col gap-3">
                   {(
                     current.children || [
                       { label: current.label, href: current.href },
@@ -931,12 +931,12 @@ export default function Sidebar() {
                     <li key={child.label}>
                       <Link
                         href={child.href || '#'}
-                        className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                        className="flex items-center rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 "
                       >
                         {child.icon &&
                           React.cloneElement(child.icon, {
                             className:
-                              'h-6 w-6 text-gray-500 dark:text-gray-400',
+                              'h-6 w-6 text-gray-500 hover:scale-105',
                           })}
                         <span className="ml-3 text-[15px]">{child.label}</span>
                       </Link>

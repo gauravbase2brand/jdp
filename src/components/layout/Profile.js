@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 
 
-const ProfileDropdown = () => {
+const Profile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef(null); // Reference to the dropdown container
 
@@ -34,14 +34,7 @@ const ProfileDropdown = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="dropdown relative" ref={dropdownRef}>
-        <span>
-          <Image
-            className="cursor-pointer"
-            onClick={toggleMenu}
-            src={adminuser}
-            alt="Admin User"
-          />
-        </span>
+          <Image src={adminuser}  onClick={toggleMenu} />
 
         {/* Dropdown Menu */}
         {menuOpen && (
@@ -127,4 +120,4 @@ const ProfileDropdown = () => {
   );
 };
 
-export default ProfileDropdown;
+export default Profile;

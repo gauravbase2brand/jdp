@@ -6,12 +6,14 @@ export default function DashboardLayout({ children }) {
     <>
       <div className="flex h-full">
         {/* Sidebar */}
-        <aside className="2xl:w-82 xl:w-80 w-auto relative">
+       <div className='2xl:w-82 xl:w-80 w-20 relative z-50'>
+         <aside className="fixed">
           <Sidebar />
         </aside>
+       </div>
 
         {/* Main content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 xl:p-6  p-3">
           <Header />
           <div className="mt-1">
             {children}

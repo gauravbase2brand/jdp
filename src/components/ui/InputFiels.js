@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ InputLabl, isRequiredLabel, InputType, icon }) => {
+const Input = ({ InputLabl, isRequiredLabel, InputType, icon  ,placeholder }) => {
   return (
     <div>
       {InputLabl && (
@@ -19,8 +19,8 @@ const Input = ({ InputLabl, isRequiredLabel, InputType, icon }) => {
         {/* Input */}
         <input
           type={InputType || 'text'}
-          placeholder="Enter your email/ phone number"
-          className="w-full rounded-full border border-gray-300 py-2 pr-4 pl-10 text-gray-700 placeholder-gray-400 transition duration-200 ease-in-out focus:ring-1 focus:ring-blue-500 focus:outline-none"
+          placeholder={placeholder}
+          className="w-full rounded-full border border-gray-300 py-2 pr-4 pl-6 text-gray-700 placeholder-gray-400 transition duration-200 ease-in-out focus:ring-1 focus:ring-blue-500 focus:outline-none"
         />
       </div>
     </div>

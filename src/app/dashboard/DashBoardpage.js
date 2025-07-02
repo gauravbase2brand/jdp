@@ -10,7 +10,7 @@ import Otp from '@/components/ui/Otp';
 
 const DashBoardpage = () => {
   return (
-<div className='mt-4'>
+<div className='my-4'>
       <div className="container mx-auto space-y-6">
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[3fr_2fr_2fr]">
@@ -18,9 +18,7 @@ const DashBoardpage = () => {
         <TotalActive />
         <PendingApprovals />
       </div>
-
-    
-      <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[1fr_5fr] xl:grid-cols-[2fr_5fr]">
+      <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[1fr_5fr] xl:grid-cols-[2fr_5fr] mb-3">
         <div className="lg:grid-row-2 grid grid-cols-1 gap-6">
           <TimesheetChart />
           <DonutChartCard />

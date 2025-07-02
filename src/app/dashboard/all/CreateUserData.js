@@ -63,9 +63,11 @@ const CreateUserData = () => {
   <>
   <div>
       <div className="relative mt-8 overflow-x-auto rounded-3xl">
-      <table className="min-w-full border border-gray-300 bg-white shadow-md ">
+      <table className="min-w-full bg-white  ">
         <thead>
-          <tr className="bg-[#162F3D] text-left text-white">
+          <tr className="bg-[#162F3D] text-left text-white" style={{
+            background:"#162F3D"
+          }}>
             <th className="px-4 py-3 text-[#2B2B2B]">
               <input type="checkbox" onChange={handleSelectAll} />
             </th>
@@ -186,6 +188,9 @@ const CreateUserData = () => {
 </div>
 
   </div>
+  <>
+  
+  </>
   </>
   );
 };

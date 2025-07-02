@@ -77,7 +77,7 @@ const LaborTable = () => {
   const getStatusClass = (status) => {
     switch (status) {
       case 'Assigned':
-        return 'text-blue-500 font-semibold';
+        return 'text-blue-500 font-semibold  ';
       case 'In Progress':
         return 'text-yellow-500 font-semibold';
       case 'Completed':
@@ -91,8 +91,19 @@ const LaborTable = () => {
 
   return (
     <div className="overflow-x-auto rounded-lg shadow-lg">
-      <table className="min-w-full table-auto border border-gray-300 bg-white">
-        <thead className="bg-gray-100 text-gray-700">
+      <table className="min-w-full table-auto bg-white">
+        <thead
+          className="!bg-[#ffffff] text-gray-700"
+          style={{
+            backgroundColor: '#ffffff',
+          }}
+        >
+          <div>
+            <h3 className="px-6 py-3 text-[16px] font-semibold">
+              {' '}
+              Labor Assigned Today
+            </h3>
+          </div>
           <tr>
             <th className="px-6 py-3 text-left text-sm font-medium">
               Employee
@@ -107,15 +118,18 @@ const LaborTable = () => {
         </thead>
         <tbody className="text-gray-600">
           {laborData.map((labor, index) => (
-            <tr key={index} className="border-b hover:bg-gray-50">
+            <tr
+              key={index}
+              className="border-b border-gray-200 hover:bg-gray-50"
+            >
               <td className="px-6 py-4 text-sm">{labor.employee}</td>
               <td className="px-6 py-4 text-sm">{labor.task}</td>
               <td className="px-6 py-4 text-sm">{labor.project}</td>
               <td className="px-6 py-4 text-sm">{labor.shiftTime}</td>
               <td
-                className={`px-6 py-4 text-sm ${getStatusClass(labor.status)}`}
+                className={`px-6 py-4 text-sm `}
               >
-                {labor.status}
+              <span className={` p-1.5 rounded-full border-[1.5px] ${getStatusClass(labor.status)}`}>  {labor.status}</span>
               </td>
             </tr>
           ))}
