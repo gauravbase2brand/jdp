@@ -4,6 +4,7 @@ import InputFiels from '../ui/InputFiels';
 import SelectInput from '../ui/SelectInput';
 import AddressFields from '../ui/AddressFields';
 import Button from '../ui/Button';
+import InputCustom from '../ui/InputFiels';
 
 const StaffCreationForm = () => {
   const [message, setMessage] = useState(''); // Initialize state for message value
@@ -18,31 +19,31 @@ const StaffCreationForm = () => {
       <div className='p-6 bg-white shadow-sm rounded-lg container  max-w-7xl m-auto'>
       <form>
           <div className="grid grid-cols-2 gap-5">
-          <InputFiels
+         <InputCustom
             InputType="text"
             placeholder="Enter full name "
             InputLabl="First Name"
             isRequiredLabel={true}
           />
-          <InputFiels
+           <InputCustom
             InputType="text"
             placeholder="Enter last name "
             InputLabl="Last Name"
             isRequiredLabel={true}
           />
-          <InputFiels
+    <InputCustom
             InputType="text"
             placeholder="Enter print on check name"
             InputLabl="Print on Check AS"
             isRequiredLabel={true}
           />
-          <InputFiels
+  <InputCustom
             InputType="text"
             placeholder="Enter security no."
             InputLabl="Social Security No"
             isRequiredLabel={true}
           />
-          <InputFiels
+          <InputCustom
             InputType="date"
             placeholder="DOB"
             InputLabl="DOB"
@@ -81,7 +82,7 @@ const StaffCreationForm = () => {
               options={['Single', 'Married', 'Unmaried']}
               selectaname="On File"
             />
-            <InputFiels
+          <InputCustom
               InputType="text"
               placeholder="Work Authorization Exprires"
               InputLabl="Work Authorization Exprires"
