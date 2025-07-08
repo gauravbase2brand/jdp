@@ -77,3 +77,21 @@ tr:nth-child(even) {
   padding: 8px !important;  
   border-radius: 100px !important;
 }
+
+ .ant-radio-inner {
+          width: 21px !important; /* Adjust size */
+          height: 21px !important; /* Adjust size */
+        }
+
+
+        /* date picker */
+        .ant-picker-range {
+    border-radius: 20px;
+    padding: 10.9px;
+    width: 100%;
+    font-size: 16px;
+}
+.ant-picker-input > input {
+  @apply !text-base font-semibold text-[#000000e0];
+}
+
