@@ -334,7 +334,7 @@ const Step3 = () => {
                 <p className="flex justify-between">
                   <span className="text-sm font-medium">Address:</span>
                   <span className="font-semibold text-black">
-                    5769 Sunnybrook Circle, Mannerist, MN 55345
+                    5769 Sunnybrook Circle Mannerist MN 55345
                   </span>
                 </p>
               </div>
@@ -482,7 +482,7 @@ const Step3 = () => {
                 }`}
                 onClick={() => showTab('todos')}
               >
-                To Do's
+                To Do s
               </li>
               <li
                 className={`cursor-pointer px-4 py-2 ${
@@ -573,7 +573,7 @@ const Step3 = () => {
           </div>
 
           <div className={activeTab === 'todos' ? '' : 'hidden'}>
-            <p className="text-center text-gray-700">To Do's Data</p>
+            <p className="text-center text-gray-700">To Do s Data</p>
             {/* Add your content for the To Do's tab */}
           </div>
 
