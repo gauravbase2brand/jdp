@@ -68,6 +68,7 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #ffffff; 
 }
+
 /* .ant-select-selector {
   padding: 8px !important;
   border-radius: 100px !important;
