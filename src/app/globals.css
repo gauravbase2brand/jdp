@@ -73,25 +73,27 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #ffffff; /* White for even rows */
 }
- .ant-select-selector {
-  padding: 8px !important;  
+.ant-select-selector {
+  padding: 8px !important;
   border-radius: 100px !important;
 }
 
- .ant-radio-inner {
-          width: 21px !important; /* Adjust size */
-          height: 21px !important; /* Adjust size */
-        }
-
-
-        /* date picker */
-        .ant-picker-range {
-    border-radius: 20px;
-    padding: 10.9px;
-    width: 100%;
-    font-size: 16px;
+.ant-radio-inner {
+  width: 21px !important; /* Adjust size */
+  height: 21px !important; /* Adjust size */
 }
-.ant-picker-input > input {
+
+.ant-picker-range {
+  border-radius: 20px;
+  padding: 10.9px;
+  width: 100%;
+  font-size: 16px;
+}
+/* .ant-picker-input > input {
   @apply !text-base font-semibold text-[#000000e0];
+} */
+.ant-picker-input > input {
+  font-size: 1rem !important; /* Equivalent to text-base */
+  font-weight: 600 !important; /* Equivalent to font-semibold */
+  color: #000000e0 !important; /* Custom color */
 }
-
