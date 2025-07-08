@@ -542,7 +542,7 @@ const Step3 = () => {
                 </thead>
                 <tbody>
                   <tr className="hover:bg-gray-100">
-                    <td className="px-4 py-2 text-sm text-gray-700">XYZ</td>
+                    <td className="px-4 py-2 text-sm text-gray-700 text-primary">XYZ</td>
                     <td className="px-4 py-2 text-sm text-gray-700">Invoice</td>
                     <td className="px-4 py-2 text-sm text-gray-700">9472</td>
                     <td className="px-4 py-2 text-sm text-gray-700">

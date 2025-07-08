@@ -13,16 +13,9 @@
   --HeadingText: #3d3d3d;
   --lightext: #333;
 
-  /* Fonts */
   --font-geist-sans: 'Geist Sans', sans-serif;
   --font-geist-mono: 'Geist Mono', monospace;
 
-  /* Font Sizes */
-  /* --text-xs: 12px;  
-  --text-sm: 14px;  
-  --text-base: 15px;  
-  --text-lg: 18px;  
-  --text-xl: 24px;   */
 }
 
 @theme inline {
@@ -55,12 +48,7 @@ body {
   padding: 0;
   height: 100%;
 }
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+
 tr:nth-child(odd) {
   background-color: #f5f5f5; 
 }
