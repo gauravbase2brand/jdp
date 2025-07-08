@@ -6,7 +6,7 @@ export default function DashboardLayout({ children }) {
     <>
       <div className="flex lg:flex-row h-full">
         {/* Sidebar */}
-        <div className='lg:w-80 relative z-50 w-[70px]'>
+        <div className=' relative z-50 w-[70px]'>
           <aside className="fixed h-full">
             <Sidebar />
           </aside>
