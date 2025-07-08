@@ -68,7 +68,7 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background-color: #ffffff; 
 }
-.ant-select-selector {
+/* .ant-select-selector {
   padding: 8px !important;
   border-radius: 100px !important;
 }
@@ -84,11 +84,9 @@ tr:nth-child(even) {
   width: 100%;
   font-size: 16px;
 }
-/* .ant-picker-input > input {
-  @apply !text-base font-semibold text-[#000000e0];
-} */
+
 .ant-picker-input > input {
-  font-size: 1rem !important; /* Equivalent to text-base */
-  font-weight: 600 !important; /* Equivalent to font-semibold */
-  color: #000000e0 !important; /* Custom color */
-}
+  font-size: 1rem !important; 
+  font-weight: 600 !important; 
+  color: #000000e0 !important; 
+} */
