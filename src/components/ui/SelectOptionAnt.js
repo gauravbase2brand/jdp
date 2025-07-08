@@ -22,7 +22,7 @@ const SelectOptionAnt = ({ FilterInpur }) => {
         optionFilterProp="children"
         onChange={onChange}
         onSearch={onSearch}
-        className="w-40 p-3 !h-12"                 
+        className="w-40 p-3 !h-10"                 
         suffixIcon={
           isSortBy
             ? <MdOutlineSortByAlpha size={20} />

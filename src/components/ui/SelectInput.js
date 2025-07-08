@@ -6,7 +6,7 @@ const SelectInput = ({ IsrequiredSelect, options, selectaname }) => {
       <div className="mb-4">
         <label
           htmlFor="gender"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-1 block text-sm font-medium text-gray-700"
         >
           {selectaname}
           {IsrequiredSelect && <span className="text-red-500">*</span>}

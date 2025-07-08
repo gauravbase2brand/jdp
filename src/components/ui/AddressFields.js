@@ -4,7 +4,7 @@ const AddressFields = ({ AddressFieldsName, messageValue, handleMessageChange })
   return (
     <div>
       <div className="">
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
+        <label htmlFor="message" className="mb-1 block text-sm font-medium text-gray-700">
           {AddressFieldsName}
         </label>
         <textarea

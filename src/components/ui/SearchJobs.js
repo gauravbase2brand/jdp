@@ -12,12 +12,12 @@ export default function ExpandableSearch() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="group inline-flex items-center h-12 bg-[#00a1ff5e] rounded-full overflow-hidden transition-all duration-300 border-[1.5px] border-[#00A1FF]"
+      className="group inline-flex items-center h-10 bg-[#00a1ff5e] rounded-full overflow-hidden transition-all duration-300 border-[1.5px] border-[#00A1FF]"
     >
       {/* Collapsed search icon button */}
       <button
         type="submit"
-        className="flex-shrink-0 w-12 h-12 flex items-center justify-center text-white 
+        className="flex-shrink-0 w-12 h-10 flex items-center justify-center text-white 
                    group-focus-within:bg-white group-focus-within:text-black transition-colors duration-300"
       >
         {/* Rotated magnifying glass */}

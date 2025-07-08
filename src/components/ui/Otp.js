@@ -6,7 +6,7 @@ const Otp = () => {
       <form className="shadow-md px-4 py-6">
         <div className="flex justify-center gap-2 mb-6">
           <input
-            className="w-12 h-12 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="w-12 h-10 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
             type="text"
             maxLength={1}
             pattern="[0-9]"
@@ -15,7 +15,7 @@ const Otp = () => {
             required
           />
           <input
-            className="w-12 h-12 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="w-12 h-10 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
             type="text"
             maxLength={1}
             pattern="[0-9]"
@@ -24,7 +24,7 @@ const Otp = () => {
             required
           />
           <input
-            className="w-12 h-12 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="w-12 h-10 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
             type="text"
             maxLength={1}
             pattern="[0-9]"
@@ -33,7 +33,7 @@ const Otp = () => {
             required
           />
           <input
-            className="w-12 h-12 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
+            className="w-12 h-10 text-center border rounded-md shadow-sm focus:border-teal-500 focus:ring-teal-500"
             type="text"
             maxLength={1}
             pattern="[0-9]"

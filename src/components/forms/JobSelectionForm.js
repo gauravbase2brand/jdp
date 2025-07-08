@@ -6,6 +6,8 @@ import { Select } from 'antd';
 import Input from '../ui/InputFiels';
 import InputCustom from '../ui/InputFiels';
 import { Radio } from 'antd';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import Button from '../ui/Button';
 // Define the MAX_COUNT constant, you can adjust this based on your requirement
 const MAX_COUNT = 1; // Make sure to define it
 
@@ -20,12 +22,12 @@ const suffix = (
 const Stepper = ({ currentStep }) => {
   return (
     <>
-      <div className="relative m-auto mb-8 flex w-1/2 items-center justify-between overflow-hidden">
+      <div className="relative m-auto mb-6 flex w-1/3 items-center justify-between overflow-hidden">
         {/* Stepper Circles */}
         {[1, 2, 3].map((step, index) => (
           <div key={step} className="flex items-center">
             <div
-              className={`relative z-10 flex h-18 w-18 items-center justify-center rounded-full ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+              className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
             >
               {step}
             </div>
@@ -44,8 +46,9 @@ const Stepper = ({ currentStep }) => {
 };
 
 // Step 1: Job Selection
-const Step1 = ({ jobType, handleJobTypeChange }) => {
-  const [value, setValue] = useState([]); // Set default selected value
+const Step1 = ({ jobType, handleJobTypeChange, setValue, value }) => {
+  // const [value, setValue] = useState(""); // Set default selected value
+  console.log('valur>>>', value);
 
   // Handle multiple selection change
   const handleValueChange = (newValue) => {
@@ -61,46 +64,51 @@ const Step1 = ({ jobType, handleJobTypeChange }) => {
         accurate processing and assignment of your task or request.
       </p>
 
-      <Select
-        mode="multiple"
-        maxTagCount={MAX_COUNT} // Limit the number of selected items
-        value={value}
-        style={{ width: '100%' }}
-        classNames=""
-        onChange={handleValueChange}
-        suffixIcon={suffix} // Show selected count in suffix
-        placeholder="Select job type"
-        options={[
-          { value: 'ServiceBased', label: 'Servic Based' },
-          { value: 'ContractBased', label: 'Contract Based' },
-        ]}
-      />
+      <div className="m-a flex justify-center">
+        <Select
+          maxTagCount={MAX_COUNT} // Limit the number of selected items
+          value={value}
+          style={{ width: '80%' }}
+          className="m-auto !h-10"
+          onChange={handleValueChange}
+          suffixIcon={suffix} // Show selected count in suffix
+          placeholder="Select job type"
+          options={[
+            { value: 'ServiceBased', label: 'Service Based' },
+            { value: 'ContractBased', label: 'Contract Based' },
+          ]}
+        />
+      </div>
     </div>
   );
 };
 
 // Step 2: Job Details
-const Step2 = () => {
+const Step2 = ({ value, size }) => {
   const { RangePicker } = DatePicker;
-  const [size, setSize] = useState('large');
+
+  const [redioSelect, setredioSelect] = useState(1);
+  const onRadioChange = (e) => {
+    setredioSelect(e.target.value);
+    console.log(setredioSelect(value));
+  };
   return (
-    <div className="mt-8">
-      <h3 className="text-center text-xl font-semibold">Job Details</h3>
-      <p className="mt-2 mb-4 text-gray-500">
-        Please provide the details of your job. This helps us understand the
-        task better and ensure accurate handling.
-      </p>
+    <div className="">
+      <h3 className="mb-2 text-left text-xl font-semibold">
+        {value === 'ContractBased' ? 'Contract Based Job' : 'Service Based Job'}
+      </h3>
+
       <form>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <span className="mb-2 block text-sm font-medium text-gray-700">
+            <span className="mb-1 block text-sm font-medium text-gray-700">
               Select Contractor <span className="text-red-500">*</span>
             </span>
             <Select
               showSearch
               style={{ width: '100%' }}
               large
-              className="!h-12"
+              className="!h-10"
               placeholder="Search to Select"
               optionFilterProp="label"
               filterSort={(optionA, optionB) =>
@@ -111,27 +119,27 @@ const Step2 = () => {
               options={[
                 {
                   value: '1',
-                  label: 'Not Identified',
+                  label: 'Benjamin',
                 },
                 {
                   value: '2',
-                  label: 'Closed',
+                  label: 'James',
                 },
                 {
                   value: '3',
-                  label: 'Communicated',
+                  label: 'Alexander',
                 },
                 {
                   value: '4',
-                  label: 'Identified',
+                  label: 'Samuel',
                 },
                 {
                   value: '5',
-                  label: 'Resolved',
+                  label: 'Thomas',
                 },
                 {
                   value: '6',
-                  label: 'Cancelled',
+                  label: 'Matthew',
                 },
               ]}
             />
@@ -153,14 +161,14 @@ const Step2 = () => {
             />
           </div>
           <div>
-            <span className="mb-2 block text-sm font-medium text-gray-700">
+            <span className="mb-1 block text-sm font-medium text-gray-700">
               Billing Status <span className="text-red-500">*</span>
             </span>
             <Select
               showSearch
               style={{ width: '100%' }}
               large
-              className="!h-12 placeholder-amber-200"
+              className="!h-10 placeholder-amber-200"
               placeholder="Enter billing status"
               optionFilterProp="label"
               filterSort={(optionA, optionB) =>
@@ -171,27 +179,11 @@ const Step2 = () => {
               options={[
                 {
                   value: '1',
-                  label: 'Not Identified',
+                  label: 'Billable',
                 },
                 {
                   value: '2',
-                  label: 'Closed',
-                },
-                {
-                  value: '3',
-                  label: 'Communicated',
-                },
-                {
-                  value: '4',
-                  label: 'Identified',
-                },
-                {
-                  value: '5',
-                  label: 'Resolved',
-                },
-                {
-                  value: '6',
-                  label: 'Cancelled',
+                  label: 'Non billable',
                 },
               ]}
             />
@@ -209,9 +201,9 @@ const Step2 = () => {
           </div>
         </div>
         <div>
-          <div className="mt-3 grid grid-cols-2 gap-3">
+          <div className="mt-3 mb-6 grid grid-cols-2 gap-3">
             <div>
-              <span className="mb-2 block text-sm font-medium text-gray-700">
+              <span className="mb-1 block text-sm font-medium text-gray-700">
                 Job Description <spam className="text-red-500">*</spam>
               </span>
               <textarea
@@ -221,32 +213,36 @@ const Step2 = () => {
             </div>
             <div className="flex flex-col gap-3">
               <div>
-                <span className="mb-2 block text-sm font-medium text-gray-700">
+                <span className="mb-1 block text-sm font-medium text-gray-700">
                   Warranty <spam className="text-red-500">*</spam>
                 </span>
                 <Radio.Group
                   name="radiogroup"
-                  defaultValue={2}
+                  onChange={onRadioChange}
+                  defaultValue={1}
                   options={[
                     { value: 1, label: 'Yes', style: { fontSize: '1rem' } },
                     { value: 2, label: 'No', style: { fontSize: '1rem' } },
                   ]}
                 />
               </div>
+              {redioSelect === 1 && (
+                <>
+                  <div>
+                    <RangePicker size={size}></RangePicker>
+                  </div>
+                </>
+              )}
 
               <div>
-                {' '}
-                <RangePicker size={size}></RangePicker>
-              </div>
-              <div>
-                <span className="mb-2 block text-sm font-medium text-gray-700">
+                <span className="mb-1 block text-sm font-medium text-gray-700">
                   Job Completion Status <spam className="text-red-500">*</spam>
                 </span>
                 <Select
                   showSearch
                   style={{ width: '100%' }}
                   large
-                  className="!h-12"
+                  className="!h-10"
                   placeholder="Search to Select"
                   optionFilterProp="label"
                   filterSort={(optionA, optionB) =>
@@ -257,27 +253,27 @@ const Step2 = () => {
                   options={[
                     {
                       value: '1',
-                      label: 'Not Identified',
+                      label: 'Assigned',
                     },
                     {
                       value: '2',
-                      label: 'Closed',
+                      label: 'Completed',
                     },
                     {
                       value: '3',
-                      label: 'Communicated',
+                      label: 'Delayed',
                     },
                     {
                       value: '4',
-                      label: 'Identified',
+                      label: 'Pending',
                     },
                     {
                       value: '5',
-                      label: 'Resolved',
+                      label: 'Delayed',
                     },
                     {
                       value: '6',
-                      label: 'Cancelled',
+                      label: 'Completed',
                     },
                   ]}
                 />
@@ -294,166 +290,323 @@ const Step2 = () => {
 const Step3 = () => {
   // State to track the active tab
   const [activeTab, setActiveTab] = useState('transactions');
-
+  const [textAreaData, setTextAreaData] = useState('');
   // Function to change active tab
   const showTab = (tabName) => {
     setActiveTab(tabName);
   };
+  const [togle, settogel] = useState(false);
+
+  const handelTogle = () => {
+    settogel(!togle);
+  };
+  const tableData = [
+    {
+      title: 'Acme Plumbing',
+      type: 'Invoice',
+      num: '1001',
+      date: '01/07/2025',
+      account: '2000 Trade Services',
+      memo: 'Plumbing work completed',
+      poNumber: 'PO-1001',
+      openBalance: '3,500.00',
+    },
+    {
+      title: 'Bright Electrical',
+      type: 'Receipt',
+      num: '1002',
+      date: '02/07/2025',
+      account: '2100 Electrical',
+      memo: 'Payment received for wiring',
+      poNumber: 'PO-1002',
+      openBalance: '0.00',
+    },
+    {
+      title: 'Green Landscapes',
+      type: 'Invoice',
+      num: '1003',
+      date: '03/07/2025',
+      account: '2200 Landscaping',
+      memo: 'Garden maintenance service',
+      poNumber: 'PO-1003',
+      openBalance: '1,200.00',
+    },
+    {
+      title: 'Safe Security',
+      type: 'Invoice',
+      num: '1004',
+      date: '04/07/2025',
+      account: '2300 Security',
+      memo: 'Alarm system installation',
+      poNumber: 'PO-1004',
+      openBalance: '2,800.00',
+    },
+    {
+      title: 'Cool Air Solutions',
+      type: 'Receipt',
+      num: '1005',
+      date: '05/07/2025',
+      account: '2400 Air Conditioning',
+      memo: 'Payment for AC repair',
+      poNumber: 'PO-1005',
+      openBalance: '0.00',
+    },
+    {
+      title: 'Acme Plumbing',
+      type: 'Invoice',
+      num: '1001',
+      date: '01/07/2025',
+      account: '2000 Trade Services',
+      memo: 'Plumbing work completed',
+      poNumber: 'PO-1001',
+      openBalance: '3,500.00',
+    },
+    {
+      title: 'Bright Electrical',
+      type: 'Receipt',
+      num: '1002',
+      date: '02/07/2025',
+      account: '2100 Electrical',
+      memo: 'Payment received for wiring',
+      poNumber: 'PO-1002',
+      openBalance: '0.00',
+    },
+  ];
+
+  const noteData = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    console.log('Textarea Data:', textAreaData); // Log the state value
+  };
+  const txtData = (e) => {
+    setTextAreaData(e.target.value); // Update state with the textarea value
+  };
   return (
     <div className="mt-8">
-      <div className="container mx-auto p-4">
-        {/* Job Information Section */}
-        <div className="mb-3 rounded-3xl bg-white p-6">
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Left Column: Job Information */}
-            <div>
-              <h2 className="text-xl font-semibold text-gray-700">
-                Job Information
-              </h2>
-              <div className="mt-4 space-y-2 text-sm text-gray-600">
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Job ID:</span>
-                  <span className="font-semibold text-black">
-                    5769 Sunnybrook
-                  </span>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Customer Name:</span>
-                  <span className="font-semibold text-black">
-                    SERVICE CALLS
-                  </span>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Job Status:</span>
-                  <span className="font-semibold text-black">None</span>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Bill To:</span>
-                  <span className="font-semibold text-black">Mag Outman</span>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Address:</span>
-                  <span className="font-semibold text-black">
-                    5769 Sunnybrook Circle Mannerist MN 55345
-                  </span>
-                </p>
-              </div>
-            </div>
+      <style jsx>{`
+        /* Custom CSS for Popup Scale Animation */
+        @keyframes popupInfinite {
+          0% {
+            transform: scale(1); /* Initial state, normal size */
+            opacity: 0.7;
+          }
+          50% {
+            transform: scale(1.2); /* Midpoint, bigger size */
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1); /* Final state, back to normal size */
+            opacity: 0.7;
+          }
+        }
 
-            {/* Right Column: Contact Information */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-700">
-                Contact Information
-              </h3>
-              <div className="mt-4 space-y-2 text-sm text-gray-600">
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Mobile:</span>
-                  <span className="font-semibold text-black">585-330-3923</span>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Email:</span>
-                  <span className="font-semibold text-black">
-                    john@gmail.com
-                  </span>
-                </p>
-                <p className="flex justify-between">
-                  <span className="text-sm font-medium">Assigned To:</span>
-                  <div className="flex justify-end gap-3">
-                    <div>
-                      <span>Lead Labor</span>
-                      <Select
-                        showSearch
-                        style={{ width: '100%' }}
-                        large
-                        className=""
-                        placeholder="Search to Select"
-                        optionFilterProp="label"
-                        filterSort={(optionA, optionB) =>
-                          (optionA?.label ?? '')
-                            .toLowerCase()
-                            .localeCompare((optionB?.label ?? '').toLowerCase())
-                        }
-                        options={[
-                          {
-                            value: '1',
-                            label: 'Jack',
-                          },
-                          {
-                            value: '2',
-                            label: 'Liam',
-                          },
-                          {
-                            value: '3',
-                            label: 'Noah',
-                          },
-                          {
-                            value: '4',
-                            label: 'Lucas',
-                          },
-                          {
-                            value: '5',
-                            label: 'William',
-                          },
-                          {
-                            value: '6',
-                            label: 'Ethan',
-                          },
-                        ]}
-                      />
-                    </div>
-                    <div>
-                      <span>Labor</span>
-                      <Select
-                        showSearch
-                        style={{ width: '100%' }}
-                        large
-                        className=""
-                        placeholder="Search to Select"
-                        optionFilterProp="label"
-                        filterSort={(optionA, optionB) =>
-                          (optionA?.label ?? '')
-                            .toLowerCase()
-                            .localeCompare((optionB?.label ?? '').toLowerCase())
-                        }
-                        options={[
-                          {
-                            value: '1',
-                            label: 'Cooper',
-                          },
-                          {
-                            value: '2',
-                            label: 'Hudson',
-                          },
-                          {
-                            value: '3',
-                            label: 'Archie',
-                          },
-                          {
-                            value: '4',
-                            label: 'Mason',
-                          },
-                          {
-                            value: '5',
-                            label: 'Hunter',
-                          },
-                          {
-                            value: '6',
-                            label: 'Xavier',
-                          },
-                        ]}
-                      />
-                    </div>
+        /* Apply the popup animation to the button */
+        .animate-popup {
+          animation: popupInfinite 2s infinite; /* 2s duration for infinite loop */
+        }
+      `}</style>
+      <div className="relative container mx-auto p-4">
+        {/* Job Information Section */}
+        <button
+          onClick={handelTogle}
+          className="bg-primary animate-popup absolute top-[-5px] right-4 rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
+        >
+          {togle ? (
+            <>
+              <IoIosArrowDown />
+            </>
+          ) : (
+            <>
+              <IoIosArrowUp />
+            </>
+          )}
+        </button>
+        <div className="mb-3 rounded-3xl bg-white p-6">
+          {togle ? (
+            <>
+              <div className="grid gap-8 md:grid-cols-2">
+                {/* Left Column: Job Information */}
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-700">
+                    Job Information
+                  </h2>
+                  <div className="mt-4 space-y-2 text-sm text-gray-600">
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Job ID:</span>
+                      <span className="font-semibold text-black">
+                        5769 Sunnybrook
+                      </span>
+                    </p>
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">
+                        Customer Name:
+                      </span>
+                      <span className="font-semibold text-black">Richard</span>
+                    </p>
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Job Status:</span>
+                      <span className="font-semibold text-black">None</span>
+                    </p>
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Bill To:</span>
+                      <span className="font-semibold text-black">
+                        Mag Outman
+                      </span>
+                    </p>
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Address:</span>
+                      <span className="font-semibold text-black">
+                        5769 Sunnybrook Circle Mannerist MN 55345
+                      </span>
+                    </p>
                   </div>
-                </p>
-                <p className="flex justify-between">
-                  <span>Invoice Status:</span>
-                  <span className="rounded-full border-[1.5px] p-1 px-2 font-semibold text-yellow-500">
-                    Pending
-                  </span>
-                </p>
+                </div>
+
+                {/* Right Column: Contact Information */}
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-700">
+                    Contact Information
+                  </h3>
+                  <div className="mt-4 space-y-2 text-sm text-gray-600">
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Mobile:</span>
+                      <span className="font-semibold text-black">
+                        585-330-3923
+                      </span>
+                    </p>
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Email:</span>
+                      <span className="font-semibold text-black">
+                        john@gmail.com
+                      </span>
+                    </p>
+                    <p className="flex justify-between">
+                      <span className="text-sm font-medium">Assigned To:</span>
+                      <div className="flex justify-end gap-3">
+                        <div>
+                          <span>Lead Labor</span>
+                          <Select
+                            showSearch
+                            style={{ width: '100%' }}
+                            large
+                            className=""
+                            placeholder="Search to Select"
+                            optionFilterProp="label"
+                            filterSort={(optionA, optionB) =>
+                              (optionA?.label ?? '')
+                                .toLowerCase()
+                                .localeCompare(
+                                  (optionB?.label ?? '').toLowerCase()
+                                )
+                            }
+                            options={[
+                              {
+                                value: '1',
+                                label: 'Jack',
+                              },
+                              {
+                                value: '2',
+                                label: 'Liam',
+                              },
+                              {
+                                value: '3',
+                                label: 'Noah',
+                              },
+                              {
+                                value: '4',
+                                label: 'Lucas',
+                              },
+                              {
+                                value: '5',
+                                label: 'William',
+                              },
+                              {
+                                value: '6',
+                                label: 'Ethan',
+                              },
+                            ]}
+                          />
+                        </div>
+                        <div>
+                          <span>Labor</span>
+                          <Select
+                            showSearch
+                            style={{ width: '100%' }}
+                            large
+                            className=""
+                            placeholder="Search to Select"
+                            optionFilterProp="label"
+                            filterSort={(optionA, optionB) =>
+                              (optionA?.label ?? '')
+                                .toLowerCase()
+                                .localeCompare(
+                                  (optionB?.label ?? '').toLowerCase()
+                                )
+                            }
+                            options={[
+                              {
+                                value: '1',
+                                label: 'Cooper',
+                              },
+                              {
+                                value: '2',
+                                label: 'Hudson',
+                              },
+                              {
+                                value: '3',
+                                label: 'Archie',
+                              },
+                              {
+                                value: '4',
+                                label: 'Mason',
+                              },
+                              {
+                                value: '5',
+                                label: 'Hunter',
+                              },
+                              {
+                                value: '6',
+                                label: 'Xavier',
+                              },
+                            ]}
+                          />
+                        </div>
+                      </div>
+                    </p>
+                    <p className="flex justify-between">
+                      <span>Invoice Status:</span>
+                      <span className="rounded-full border-[1.5px] p-1 px-2 font-semibold text-yellow-500">
+                        Pending
+                      </span>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-700">
+                    Job Information
+                  </h2>
+                </div>
+                <div>
+                  <div className="text-gray-600">
+                    <p className="flex items-center justify-end gap-3">
+                      <span className="text-sm font-semibold">Job ID:</span>
+                      <span class="text-sm font-medium">5769 Sunnybrook</span>
+                    </p>
+                    <p className="flex items-center justify-end gap-3">
+                      <span className="text-sm font-semibold">
+                        Customer Name:
+                      </span>
+                      <span class="text-sm font-medium">Richard </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
 
           {/* Button Section */}
         </div>
@@ -473,17 +626,7 @@ const Step3 = () => {
               >
                 Transactions
               </li>
-             
-              <li
-                className={`cursor-pointer px-4 py-2 ${
-                  activeTab === 'todos'
-                    ? 'border-b-2 border-blue-500 text-blue-500'
-                    : 'text-gray-600 hover:text-blue-500'
-                }`}
-                onClick={() => showTab('todos')}
-              >
-                To Do s
-              </li>
+
               <li
                 className={`cursor-pointer px-4 py-2 ${
                   activeTab === 'notes'
@@ -512,7 +655,7 @@ const Step3 = () => {
             {/* Transactions Tab Content */}
             <div className="overflow-x-auto">
               <table className="min-w-full table-auto border-collapse">
-                <thead className="bg-gray-100">
+                <thead className="">
                   <tr>
                     <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
                       Title
@@ -541,27 +684,34 @@ const Step3 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="hover:bg-gray-100">
-                    <td className="px-4 py-2 text-sm text-gray-700 ">XYZ</td>
-                    <td className="px-4 py-2 text-sm text-gray-700">Invoice</td>
-                    <td className="px-4 py-2 text-sm text-gray-700">9472</td>
-                    <td className="px-4 py-2 text-sm text-gray-700">
-                      04/06/2025
-                    </td>
-                    <td className="px-4 py-2 text-sm text-gray-700">
-                      1200 Accounts....
-                    </td>
-                    <td className="px-4 py-2 text-sm text-gray-700">
-                      Accounts Details...
-                    </td>
-                    <td className="px-4 py-2 text-sm text-gray-700">
-                      P.O Details...
-                    </td>
-                    <td className="px-4 py-2 text-sm text-gray-700">
-                      1,355.78
-                    </td>
-                  </tr>
-                  {/* Repeat for more rows */}
+                  {tableData.map((item, index) => (
+                    <tr key={index} className="hover:bg-gray-100">
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.title}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.type}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.num}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.date}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.account}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.memo}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.poNumber}
+                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-700">
+                        {item.openBalance}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -572,14 +722,20 @@ const Step3 = () => {
             {/* Add your content for the Contacts tab */}
           </div>
 
-          <div className={activeTab === 'todos' ? '' : 'hidden'}>
-            <p className="text-center text-gray-700">To Do s Data</p>
-            {/* Add your content for the To Do's tab */}
-          </div>
-
           <div className={activeTab === 'notes' ? '' : 'hidden'}>
-            <p className="text-center text-gray-700">Notes Data</p>
-            {/* Add your content for the Notes tab */}
+            <form onSubmit={noteData}>
+              <textarea
+                onChange={txtData}
+                rows={6}
+                className="h-full w-full rounded-lg border border-gray-300 py-2 pr-4 pl-3 text-gray-700 placeholder-gray-400 transition duration-200 ease-in-out focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                placeholder="Enter Your Messages"
+              ></textarea>
+              <Button
+                uibutton="Verify"
+                ButtonUi="rounded-full bg-blue-500 px-6 py-2 text-sm text-white hover:bg-blue-600 w-fit my-2"
+                PositionBtn="justify-end"
+              />
+            </form>
           </div>
 
           <div className={activeTab === 'sentEmail' ? '' : 'hidden'}>
@@ -596,6 +752,8 @@ const Step3 = () => {
 const JobSelectionForm = () => {
   const [step, setStep] = useState(1);
   const [jobType, setJobType] = useState([]);
+  const [value, setValue] = useState(''); // Set default selected value
+  const [size, setSize] = useState('large');
 
   const handleNext = () => {
     if (step < 3) {
@@ -618,28 +776,33 @@ const JobSelectionForm = () => {
       <Stepper currentStep={step} />
 
       <div
-        className={`mx-auto ${step === 1 ? 'max-w-4xl bg-white shadow-lg' : step === 2 ? 'max-w-5xl bg-white shadow-lg' : step === 3 ? 'container mx-auto space-y-6' : ''} rounded-lg p-6`}
+        className={`mx-auto ${step === 1 ? 'max-w-2xl bg-white shadow-lg' : step === 2 ? 'max-w-5xl bg-white shadow-lg' : step === 3 ? 'container mx-auto space-y-6' : ''} rounded-lg p-6`}
       >
         {step === 1 && (
-          <Step1 jobType={jobType} handleJobTypeChange={handleJobTypeChange} />
+          <Step1
+            jobType={jobType}
+            handleJobTypeChange={handleJobTypeChange}
+            setValue={setValue}
+            value={value}
+          />
         )}
 
-        {step === 2 && <Step2 />}
+        {step === 2 && <Step2 size={size} value={value} />}
 
         {step === 3 && <Step3 />}
 
-        <div className="mt-10 flex justify-between">
+        <div className="flex justify-center gap-3 pt-4">
           <button
             onClick={handleBack}
             disabled={step === 1}
-            className="rounded-lg bg-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-400 disabled:bg-gray-200"
+            className="rounded-full border-[1.5px] px-6 py-2 text-gray-700 disabled:bg-gray-200"
           >
             Back
           </button>
           <button
             onClick={handleNext}
             disabled={step === 1 && jobType.length === 0}
-            className="rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
+            className="rounded-full bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
           >
             Next
           </button>
