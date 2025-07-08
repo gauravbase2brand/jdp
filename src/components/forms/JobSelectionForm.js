@@ -88,9 +88,9 @@ const Step2 = ({ value, size }) => {
   const { RangePicker } = DatePicker;
 
   const [redioSelect, setredioSelect] = useState(1);
+
   const onRadioChange = (e) => {
     setredioSelect(e.target.value);
-    console.log(setredioSelect(value));
   };
   return (
     <div className="">
@@ -226,7 +226,7 @@ const Step2 = ({ value, size }) => {
                   ]}
                 />
               </div>
-              {redioSelect === 1 && (
+              {redioSelect == 1 && (
                 <>
                   <div>
                     <RangePicker size={size}></RangePicker>
@@ -373,13 +373,16 @@ const Step3 = () => {
     },
   ];
 
+  const txtData = (e) => {
+    setTextAreaData(e.target.value); // Update state when textarea content changes
+  };
+
+  // Handle form submission
   const noteData = (e) => {
     e.preventDefault(); // Prevent default form submission
     console.log('Textarea Data:', textAreaData); // Log the state value
   };
-  const txtData = (e) => {
-    setTextAreaData(e.target.value); // Update state with the textarea value
-  };
+  
   return (
     <div className="mt-8">
       <style jsx>{`
@@ -725,11 +728,13 @@ const Step3 = () => {
           <div className={activeTab === 'notes' ? '' : 'hidden'}>
             <form onSubmit={noteData}>
               <textarea
-                onChange={txtData}
+                onChange={(e)=>setTextAreaData(e.target.value)}
+               value={textAreaData}
+               
                 rows={6}
                 className="h-full w-full rounded-lg border border-gray-300 py-2 pr-4 pl-3 text-gray-700 placeholder-gray-400 transition duration-200 ease-in-out focus:ring-1 focus:ring-blue-500 focus:outline-none"
                 placeholder="Enter Your Messages"
-              ></textarea>
+              />
               <Button
                 uibutton="Verify"
                 ButtonUi="rounded-full bg-blue-500 px-6 py-2 text-sm text-white hover:bg-blue-600 w-fit my-2"
