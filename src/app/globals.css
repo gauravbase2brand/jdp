@@ -68,7 +68,7 @@ tr:nth-child(even) {
 
 
 
-/* .ant-select-selector {
+.ant-select-selector {
   padding: 8px !important;
   border-radius: 100px !important;
 }
@@ -89,4 +89,4 @@ tr:nth-child(even) {
   font-size: 1rem !important; 
   font-weight: 600 !important; 
   color: #000000e0 !important; 
-} */
+}
