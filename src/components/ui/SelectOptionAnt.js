@@ -14,7 +14,7 @@ const SelectOptionAnt = ({ FilterInpur }) => {
   const isSortBy = FilterInpur === 'Sort By'
 
   return (
-    <div className="p-2">
+    <div className="md:p-2">
       <Select
         showSearch
         placeholder={FilterInpur}

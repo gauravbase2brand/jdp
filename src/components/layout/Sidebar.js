@@ -21,6 +21,7 @@ import adminuser from '../../../public/images/icons/admin user.svg'; // Update t
 import { GrHomeRounded } from 'react-icons/gr';
 import { BiUser } from 'react-icons/bi';
 import BriefcaseIcon from '../../../public/images/briefcase.svg';
+import { Tooltip } from 'antd';
 
 const menuItems = [
   {
@@ -909,6 +910,7 @@ export default function Sidebar({}) {
 
   return (
     <>
+    
       <div className="flex h-screen">
         <div
           className={`p-3' absolute top-[15px] z-20 ${menuOpen ? 'right-[-40px] z-20' : 'left-[90px]'} `}
@@ -920,14 +922,22 @@ export default function Sidebar({}) {
           </button>
         </div>
 
-        <nav className="flex w-20 flex-col items-center justify-between border-r border-gray-200 bg-white p-3 py-4">
+        <nav className="flex md:w-17 w-15 flex-col items-center justify-between border-r border-gray-200 bg-white md:p-3 p-2 py-4">
           <div className="flex flex-col items-center justify-center space-y-4">
             {/* logo */}
             <Image src={logofirst} alt="Logo" className="mx-auto h-8 w-auto" />
 
             {/* icons */}
-            <div className="flex w-10 flex-col items-center justify-center gap-4 lg:gap-3 2xl:gap-6">
+            <div className="flex w-10 flex-col items-center justify-center gap-2 lg:gap-3 2xl:gap-6">
+          
+             
+           
               {menuItems.map((item) => (
+
+     <Tooltip placement="rightTop" title={item.label}
+
+             
+               >
                 <button
                   key={item.label}
                   onClick={() => setActiveSection(item.label)}
@@ -937,8 +947,10 @@ export default function Sidebar({}) {
                       : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
                   } `}
                 >
-                  {React.cloneElement(item.icon, { className: 'h-6 w-6 ' })}
+                  {React.cloneElement(item.icon, { className: ' md:h-6 md:w-6 w-5 ' })}
                 </button>
+                </Tooltip>
+                
               ))}
             </div>
           </div>
@@ -955,7 +967,7 @@ export default function Sidebar({}) {
 
         {menuOpen && (
           <>
-            <aside className="flex w-[250px] flex-1 flex-col border-l border-gray-200 bg-white">
+            <aside className="flex w-[250px] flex-1 flex-col border-l border-gray-200 bg-white p-2">
               {/* header */}
               <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
                 {current.label}
@@ -978,7 +990,7 @@ export default function Sidebar({}) {
                           React.cloneElement(child.icon, {
                             className: 'h-6 w-6 text-gray-500 hover:scale-105',
                           })}
-                        <span className="ml-3 text-[13px] lg:text-[15px]">
+                        <span className="ml-3 text-[13px] lg:text-sm">
                           {child.label}
                         </span>
                       </Link>
@@ -990,6 +1002,10 @@ export default function Sidebar({}) {
           </>
         )}
       </div>
+
+
+
+
     </>
   );
 }

@@ -1,17 +1,12 @@
 import { SiGooglemaps } from 'react-icons/si';
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
 import React, { useState } from 'react';
-import { DownOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
-import Input from '../ui/InputFiels';
 import InputCustom from '../ui/InputFiels';
 import { Radio } from 'antd';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import Button from '../ui/Button';
-const ContractBasedJob = ({ value, size }) => {
+const ContractBasedJob = ({  }) => {
   const { RangePicker } = DatePicker;
   const [value, setValue] = useState(''); // Set default selected value
-  const [size, setSize] = useState('large');
   const [redioSelect, setredioSelect] = useState(1);
 
   const onRadioChange = (e) => {
@@ -20,7 +15,7 @@ const ContractBasedJob = ({ value, size }) => {
   return (
     <div className="">
       <h3 className="mb-2 text-left text-xl font-semibold">
-        {value === 'ContractBased' ? 'Contract Based Job' : 'Service Based Job'}
+      Contract Based Job
       </h3>
 
       <form>
@@ -92,8 +87,9 @@ const ContractBasedJob = ({ value, size }) => {
             <Select
               showSearch
               style={{ width: '100%' }}
-              large
-              className="!h-10 placeholder-amber-200"
+              size='large'
+              
+              className=""
               placeholder="Enter billing status"
               optionFilterProp="label"
               filterSort={(optionA, optionB) =>
@@ -143,6 +139,7 @@ const ContractBasedJob = ({ value, size }) => {
                 </span>
                 <Radio.Group
                   name="radiogroup"
+                  size='large'
                   onChange={onRadioChange}
                   defaultValue={1}
                   options={[
@@ -154,7 +151,7 @@ const ContractBasedJob = ({ value, size }) => {
               {redioSelect == 1 && (
                 <>
                   <div>
-                    <RangePicker size={size}></RangePicker>
+                    <RangePicker size='large'></RangePicker>
                   </div>
                 </>
               )}
@@ -167,7 +164,8 @@ const ContractBasedJob = ({ value, size }) => {
                   showSearch
                   style={{ width: '100%' }}
                   large
-                  className="!h-10"
+                  className=""
+                  size='large'
                   placeholder="Search to Select"
                   optionFilterProp="label"
                   filterSort={(optionA, optionB) =>

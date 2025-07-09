@@ -55,7 +55,13 @@ body {
   }
 } */
 tr:nth-child(odd) {
-  background-color: #f5f5f5; 
+  background-color: #EFF4FA; 
+
+}
+tr:nth-child(odd):hover {
+  background-color: #A3CDFF;
+  transition: ease-in-out;
+  transition-duration: 0.2s; /* Corrected here */
 }
 
 tr:nth-child(even) {
@@ -92,6 +98,11 @@ tr:nth-child(even) {
 }
 button{
   cursor: pointer;
+}
+.ant-tooltip-inner{
+  background-color: var(--primary) !important;
+  border-radius: 10px !important;
+
 }
 
 
