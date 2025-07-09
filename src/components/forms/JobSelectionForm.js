@@ -22,12 +22,12 @@ const suffix = (
 const Stepper = ({ currentStep }) => {
   return (
     <>
-      <div className="relative m-auto mb-4 flex w-1/2 items-center justify-between overflow-hidden md:mb-6 md:w-1/3">
+      <div className="relative m-auto md:mb-6 mb-4 flex md:w-1/3 w-1/2 items-center justify-between overflow-hidden">
         {/* Stepper Circles */}
         {[1, 2, 3].map((step, index) => (
           <div key={step} className="flex items-center">
             <div
-              className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full md:h-12 md:w-12 ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+              className={`relative z-10 flex md:h-12 md:w-12 h-8 w-8   items-center justify-center rounded-full ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
             >
               {step}
             </div>
@@ -382,27 +382,28 @@ const Step3 = () => {
     e.preventDefault(); // Prevent default form submission
     console.log('Textarea Data:', textAreaData); // Log the state value
   };
-
+  
   return (
     <div className="mt-8">
-      <div className="mb-3 grid grid-cols-1">
+     
+      <div className="grid grid-cols-1 mb-3">
         {/* Job Information Section */}
-
-        <div className="relative mb-3 rounded-3xl bg-white p-3 md:p-6">
-          <button
-            onClick={handelTogle}
-            className="bg-primary animate-popup absolute top-[-5px] right-4 rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
-          >
-            {togle ? (
-              <>
-                <IoIosArrowDown />
-              </>
-            ) : (
-              <>
-                <IoIosArrowUp />
-              </>
-            )}
-          </button>
+       
+        <div className="mb-3 rounded-3xl bg-white md:p-6 p-3 relative">
+           <button
+          onClick={handelTogle}
+          className="bg-primary animate-popup absolute top-[-5px] right-4 rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
+        >
+          {togle ? (
+            <>
+              <IoIosArrowDown />
+            </>
+          ) : (
+            <>
+              <IoIosArrowUp />
+            </>
+          )}
+        </button>
           {togle ? (
             <>
               <div className="grid gap-8 md:grid-cols-2">
@@ -566,7 +567,7 @@ const Step3 = () => {
             </>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-700">
                     Job Information
@@ -594,7 +595,7 @@ const Step3 = () => {
         </div>
 
         {/* Table Section */}
-        <div className="rounded-lg bg-white p-2 shadow-md md:p-4">
+        <div className="rounded-lg bg-white md:p-4 p-2 shadow-md">
           {/* Tab Navigation */}
           <div className="mb-4 border-b border-gray-300">
             <ul className="flex space-x-8 overflow-y-auto">
@@ -707,8 +708,9 @@ const Step3 = () => {
           <div className={activeTab === 'notes' ? '' : 'hidden'}>
             <form onSubmit={noteData}>
               <textarea
-                onChange={(e) => setTextAreaData(e.target.value)}
-                value={textAreaData}
+                onChange={(e)=>setTextAreaData(e.target.value)}
+               value={textAreaData}
+               
                 rows={6}
                 className="h-full w-full rounded-lg border border-gray-300 py-2 pr-4 pl-3 text-gray-700 placeholder-gray-400 transition duration-200 ease-in-out focus:ring-1 focus:ring-blue-500 focus:outline-none"
                 placeholder="Enter Your Messages"
@@ -759,7 +761,7 @@ const JobSelectionForm = () => {
       <Stepper currentStep={step} />
 
       <div
-        className={`mx-auto ${step === 1 ? 'max-w-2xl bg-white p-6 shadow-lg' : step === 2 ? 'max-w-5xl bg-white p-6 shadow-lg' : step === 3 ? 'container mx-auto space-y-6' : ''} rounded-lg`}
+        className={`mx-auto ${step === 1 ? 'max-w-2xl bg-white shadow-lg p-6' : step === 2 ? 'max-w-5xl bg-white shadow-lg p-6' : step === 3 ? 'container mx-auto space-y-6' : ''} rounded-lg `}
       >
         {step === 1 && (
           <Step1
@@ -770,7 +772,7 @@ const JobSelectionForm = () => {
           />
         )}
 
-        {step === 2 && <Step2 size={size} value={value} />}
+        {step === 2 &&  <Step2 size={size} value={value}/>}
 
         {step === 3 && <Step3 />}
 
