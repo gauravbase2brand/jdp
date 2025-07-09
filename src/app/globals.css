@@ -93,3 +93,49 @@ tr:nth-child(even) {
 button{
   cursor: pointer;
 }
+
+
+        /* For Webkit Browsers (Chrome, Safari) */
+        .scrollbar-webkit {
+          -webkit-overflow-scrolling: touch;
+          overflow-x: auto; /* Enables horizontal scrolling */
+        }
+
+        /* Custom scrollbar for Webkit Browsers (Chrome, Safari) */
+        .scrollbar-webkit::-webkit-scrollbar {
+          height: 2px; /* Height for horizontal scrollbar */
+        }
+
+        .scrollbar-webkit::-webkit-scrollbar-track {
+          background-color: #f1f1f1; /* Light grey track */
+        }
+
+        .scrollbar-webkit::-webkit-scrollbar-thumb {
+          background-color: gray; /* Red thumb */
+          border-radius: 10px; /* Rounded corners for thumb */
+        }
+
+        .scrollbar-webkit::-webkit-scrollbar-thumb:hover {
+          background-color: gray; /* Darker red thumb on hover */}
+
+
+
+          @keyframes popupInfinite {
+          0% {
+            transform: scale(1); /* Initial state, normal size */
+            opacity: 0.7;
+          }
+          50% {
+            transform: scale(1.2); /* Midpoint, bigger size */
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1); /* Final state, back to normal size */
+            opacity: 0.7;
+          }
+        }
+
+   
+        .animate-popup {
+          animation: popupInfinite 2s infinite; /* 2s duration for infinite loop */
+        }

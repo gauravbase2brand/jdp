@@ -897,7 +897,7 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({}) {
   // which section is open
   const [menuOpen, setMenuOpen] = useState(true);
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -911,7 +911,7 @@ export default function Sidebar() {
     <>
       <div className="flex h-screen">
         <div
-          className={`p-3' absolute top-10 z-20 ${menuOpen ? 'right-[-86px] z-20' : 'left-[90px]'} `}
+          className={`p-3' absolute top-[15px] z-20 ${menuOpen ? 'right-[-40px] z-20' : 'left-[90px]'} `}
         >
           <button onClick={toggleMenu} className="">
             <>

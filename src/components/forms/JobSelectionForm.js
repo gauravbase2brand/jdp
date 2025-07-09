@@ -22,12 +22,12 @@ const suffix = (
 const Stepper = ({ currentStep }) => {
   return (
     <>
-      <div className="relative m-auto mb-6 flex w-1/3 items-center justify-between overflow-hidden">
+      <div className="relative m-auto mb-4 flex w-1/2 items-center justify-between overflow-hidden md:mb-6 md:w-1/3">
         {/* Stepper Circles */}
         {[1, 2, 3].map((step, index) => (
           <div key={step} className="flex items-center">
             <div
-              className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+              className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full md:h-12 md:w-12 ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
             >
               {step}
             </div>
@@ -382,48 +382,27 @@ const Step3 = () => {
     e.preventDefault(); // Prevent default form submission
     console.log('Textarea Data:', textAreaData); // Log the state value
   };
-  
+
   return (
     <div className="mt-8">
-      <style jsx>{`
-        /* Custom CSS for Popup Scale Animation */
-        @keyframes popupInfinite {
-          0% {
-            transform: scale(1); /* Initial state, normal size */
-            opacity: 0.7;
-          }
-          50% {
-            transform: scale(1.2); /* Midpoint, bigger size */
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1); /* Final state, back to normal size */
-            opacity: 0.7;
-          }
-        }
-
-        /* Apply the popup animation to the button */
-        .animate-popup {
-          animation: popupInfinite 2s infinite; /* 2s duration for infinite loop */
-        }
-      `}</style>
-      <div className="relative container mx-auto p-4">
+      <div className="mb-3 grid grid-cols-1">
         {/* Job Information Section */}
-        <button
-          onClick={handelTogle}
-          className="bg-primary animate-popup absolute top-[-5px] right-4 rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
-        >
-          {togle ? (
-            <>
-              <IoIosArrowDown />
-            </>
-          ) : (
-            <>
-              <IoIosArrowUp />
-            </>
-          )}
-        </button>
-        <div className="mb-3 rounded-3xl bg-white p-6">
+
+        <div className="relative mb-3 rounded-3xl bg-white p-3 md:p-6">
+          <button
+            onClick={handelTogle}
+            className="bg-primary animate-popup absolute top-[-5px] right-4 rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
+          >
+            {togle ? (
+              <>
+                <IoIosArrowDown />
+              </>
+            ) : (
+              <>
+                <IoIosArrowUp />
+              </>
+            )}
+          </button>
           {togle ? (
             <>
               <div className="grid gap-8 md:grid-cols-2">
@@ -587,7 +566,7 @@ const Step3 = () => {
             </>
           ) : (
             <>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-700">
                     Job Information
@@ -615,10 +594,10 @@ const Step3 = () => {
         </div>
 
         {/* Table Section */}
-        <div className="rounded-lg bg-white p-4 shadow-md">
+        <div className="rounded-lg bg-white p-2 shadow-md md:p-4">
           {/* Tab Navigation */}
           <div className="mb-4 border-b border-gray-300">
-            <ul className="flex space-x-8">
+            <ul className="flex space-x-8 overflow-y-auto">
               <li
                 className={`cursor-pointer px-4 py-2 ${
                   activeTab === 'transactions'
@@ -728,9 +707,8 @@ const Step3 = () => {
           <div className={activeTab === 'notes' ? '' : 'hidden'}>
             <form onSubmit={noteData}>
               <textarea
-                onChange={(e)=>setTextAreaData(e.target.value)}
-               value={textAreaData}
-               
+                onChange={(e) => setTextAreaData(e.target.value)}
+                value={textAreaData}
                 rows={6}
                 className="h-full w-full rounded-lg border border-gray-300 py-2 pr-4 pl-3 text-gray-700 placeholder-gray-400 transition duration-200 ease-in-out focus:ring-1 focus:ring-blue-500 focus:outline-none"
                 placeholder="Enter Your Messages"
@@ -781,7 +759,7 @@ const JobSelectionForm = () => {
       <Stepper currentStep={step} />
 
       <div
-        className={`mx-auto ${step === 1 ? 'max-w-2xl bg-white shadow-lg' : step === 2 ? 'max-w-5xl bg-white shadow-lg' : step === 3 ? 'container mx-auto space-y-6' : ''} rounded-lg p-6`}
+        className={`mx-auto ${step === 1 ? 'max-w-2xl bg-white p-6 shadow-lg' : step === 2 ? 'max-w-5xl bg-white p-6 shadow-lg' : step === 3 ? 'container mx-auto space-y-6' : ''} rounded-lg`}
       >
         {step === 1 && (
           <Step1

@@ -68,35 +68,35 @@ const CreateUserData = () => {
           <tr className="bg-[#162F3D] text-left text-white" style={{
             background:"#162F3D"
           }}>
-            <th className="px-4 py-3 text-[#2B2B2B]">
+            <th className="px-3 py-3 text-[#2B2B2B]">
               <input type="checkbox" onChange={handleSelectAll} />
             </th>
-            <th className="px-4 py-3 ">Name</th>
-            <th className="px-4 py-3 ">Role</th>
-            <th className="px-4 py-3 ">Phone</th>
-            <th className="px-4 py-3 ">Email</th>
-            <th className="px-4 py-3 ">Business</th>
-            <th className="px-4 py-3 ">Created On</th>
-            <th className="px-4 py-3 ">Action</th>
+            <th className="px-3 py-3 ">Name</th>
+            <th className="px-3 py-3 ">Role</th>
+            <th className="px-3 py-3 ">Phone</th>
+            <th className="px-3 py-3 ">Email</th>
+            <th className="px-3 py-3 ">Business</th>
+            <th className="px-3 py-3 ">Created On</th>
+            <th className="px-3 py-3 ">Action</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id} className="hover:bg-gray-50">
-              <td className="px-4 py-3 text-[#2B2B2B]">
+              <td className="px-3 py-3 text-[#2B2B2B]">
                 <input
                   type="checkbox"
                   checked={selectedUsers.includes(user.name)}
                   onChange={(e) => handleSelectUser(e, user.name)}
                 />
               </td>
-              <td className="px-4 py-3 text-[#2B2B2B]">{user.name}</td>
-              <td className="px-4 py-3 text-[#2B2B2B]">{user.role}</td>
-              <td className="px-4 py-3 text-[#2B2B2B]">{user.phone}</td>
-              <td className="px-4 py-3 text-[#2B2B2B]">{user.email}</td>
-              <td className="px-4 py-3 text-[#2B2B2B]">{user.business}</td>
-              <td className="px-4 py-3 text-[#2B2B2B]">{user.createdOn}</td>
-              <td className="px-4 py-3 text-[#2B2B2B] flex space-x-2 relative">
+              <td className="px-3 py-3 text-[#2B2B2B]">{user.name}</td>
+              <td className="px-3 py-3 text-[#2B2B2B]">{user.role}</td>
+              <td className="px-3 py-3 text-[#2B2B2B]">{user.phone}</td>
+              <td className="px-3 py-3 text-[#2B2B2B]">{user.email}</td>
+              <td className="px-3 py-3 text-[#2B2B2B]">{user.business}</td>
+              <td className="px-3 py-3 text-[#2B2B2B]">{user.createdOn}</td>
+              <td className="px-3 py-3 text-[#2B2B2B] flex space-x-2 relative">
                 <button onClick={() => handleOpen(user.id)}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="6" height="22" viewBox="0 0 6 22" fill="none">
                     <path
