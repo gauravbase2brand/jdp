@@ -34,7 +34,7 @@ const Profile = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="dropdown relative" ref={dropdownRef}>
-          <Image src={adminuser}  onClick={toggleMenu} />
+          <Image src={adminuser}  onClick={toggleMenu}  alt='profile'/>
 
         {/* Dropdown Menu */}
         {menuOpen && (

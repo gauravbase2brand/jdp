@@ -935,11 +935,11 @@ export default function Sidebar({}) {
               {menuItems.map((item) => (
 
      <Tooltip placement="rightTop" title={item.label}
-
+  key={item.label}
              
                >
                 <button
-                  key={item.label}
+                
                   onClick={() => setActiveSection(item.label)}
                   className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
                     activeSection === item.label
