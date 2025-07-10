@@ -78,7 +78,7 @@ const placeholderData = "Select job type"
   );
 };
 
-const JobSelectionForm = () => {
+const JobSelectionForm = ({}) => {
   const [step, setStep] = useState(1);
   const [jobType, setJobType] = useState([]);
   const [value, setValue] = useState('');
@@ -123,7 +123,11 @@ const JobSelectionForm = () => {
             <ContractBasedJob />
           ))}
 
-        {step === 3 && <JobsInvoice />}
+        {step === 3 && <JobsInvoice step={step} setStep={setStep}/>}
+
+
+
+
 
         <div className="flex justify-center gap-3 pt-4">
           <button

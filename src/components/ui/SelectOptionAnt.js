@@ -14,15 +14,15 @@ const SelectOptionAnt = ({ FilterInpur }) => {
   const isSortBy = FilterInpur === 'Sort By'
 
   return (
-    <div className="md:p-2">
+    <div className="md:p-1">
       <Select
         showSearch
         placeholder={FilterInpur}
-
+size='large'
         optionFilterProp="children"
         onChange={onChange}
         onSearch={onSearch}
-        className="md:w-40 w-24 p-3 !h-10"                 
+        className="md:w-40 w-24 "                 
         suffixIcon={
           isSortBy
             ? <MdOutlineSortByAlpha size={20} />

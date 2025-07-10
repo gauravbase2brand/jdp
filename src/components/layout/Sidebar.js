@@ -951,7 +951,7 @@ export default function Sidebar({}) {
 
         {menuOpen && (
           <>
-            <aside className="flex w-[250px] flex-1 flex-col border-l border-gray-200 bg-white p-2">
+            <aside className="flex w-[250px] flex-1 flex-col bg-white p-2 rounded-r-4xl border-r-1 border-r-gray-200 ">
               {/* header */}
               <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
                 {current.label}
@@ -965,7 +965,13 @@ export default function Sidebar({}) {
                       { label: current.label, href: current.href },
                     ]
                   ).map((child) => (
-                    <li key={child.label}>
+
+                         <Tooltip
+                  placement="rightTop"
+                  title={child.label}
+                key={child.label}
+                >
+                    <li >
                       <Link
                         href={child.href || '#'}
                         className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
@@ -983,6 +989,7 @@ export default function Sidebar({}) {
                         </span>
                       </Link>
                     </li>
+                    </Tooltip>
                   ))}
                 </ul>
               </nav>

@@ -47,27 +47,27 @@ const ServiceBasedJob = ({}) => {
               options={[
                 {
                   value: '1',
-                  label: 'Benjamin',
+                  label: 'Completed',
                 },
                 {
                   value: '2',
-                  label: 'James',
+                  label: 'Completed',
                 },
                 {
                   value: '3',
-                  label: 'Alexander',
+                  label: 'Delayed',
                 },
                 {
                   value: '4',
-                  label: 'Samuel',
+                  label: 'Delayed',
                 },
                 {
                   value: '5',
-                  label: 'Thomas',
+                  label: 'Pending',
                 },
                 {
                   value: '6',
-                  label: 'Matthew',
+                  label: 'Pending',
                 },
               ]}
             />
@@ -262,13 +262,13 @@ const ServiceBasedJob = ({}) => {
 
           <div>
             <span className="mb-1 block text-sm font-medium text-gray-700">
-              Due Date <span className="text-red-500">*</span>
+           Completion Status <span className="text-red-500">*</span>
             </span>
             <Select
               showSearch
               style={{ width: '100%' }}
               size="large"
-              placeholder="Select labor"
+              placeholder="Completion Status"
               optionFilterProp="label"
               filterSort={(optionA, optionB) =>
                 (optionA?.label ?? '')
@@ -276,29 +276,29 @@ const ServiceBasedJob = ({}) => {
                   .localeCompare((optionB?.label ?? '').toLowerCase())
               }
               options={[
-                {
+                   {
                   value: '1',
-                  label: ' Don Benjamin',
+                  label: 'Completed',
                 },
                 {
                   value: '2',
-                  label: 'Robod',
+                  label: 'Completed',
                 },
                 {
                   value: '3',
-                  label: 'Alexander',
+                  label: 'Delayed',
                 },
                 {
                   value: '4',
-                  label: 'Marcus',
+                  label: 'Delayed',
                 },
                 {
                   value: '5',
-                  label: 'Thomas',
+                  label: 'Pending',
                 },
                 {
                   value: '6',
-                  label: 'Alen',
+                  label: 'Pending',
                 },
               ]}
             />
