@@ -910,7 +910,6 @@ export default function Sidebar({}) {
 
   return (
     <>
-    
       <div className="flex h-screen">
         <div
           className={`p-3' absolute top-[15px] z-20 ${menuOpen ? 'right-[-40px] z-20' : 'left-[90px]'} `}
@@ -922,35 +921,37 @@ export default function Sidebar({}) {
           </button>
         </div>
 
-        <nav className="flex md:w-17 w-15 flex-col items-center justify-between border-r border-gray-200 bg-white md:p-3 p-2 py-4">
+        <nav className="flex w-15 flex-col items-center justify-between border-r border-gray-200 bg-white p-2 py-4 md:w-17 md:p-3">
           <div className="flex flex-col items-center justify-center space-y-4">
             {/* logo */}
             <Image src={logofirst} alt="Logo" className="mx-auto h-8 w-auto" />
 
             {/* icons */}
             <div className="flex w-10 flex-col items-center justify-center gap-2 lg:gap-3 2xl:gap-6">
-          
-             
-           
               {menuItems.map((item) => (
-
-     <Tooltip placement="rightTop" title={item.label}
-  key={item.label}
-             
-               >
-                <button
-                
-                  onClick={() => setActiveSection(item.label)}
-                  className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
-                    activeSection === item.label
-                      ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]'
-                      : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
-                  } `}
+                <Tooltip
+                  placement="rightTop"
+                  title={item.label}
+                  key={item.label}
                 >
-                  {React.cloneElement(item.icon, { className: ' md:h-6 md:w-6 w-5 ' })}
-                </button>
+                  <button
+                  onClick={() => {
+    setActiveSection(item.label);
+    setMenuOpen(true);
+  }}
+                      
+                   
+                    className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
+                      activeSection === item.label
+                        ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]'
+                        : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
+                    } `}
+                  >
+                    {React.cloneElement(item.icon, {
+                      className: ' md:h-6 md:w-6 w-5 ',
+                    })}
+                  </button>
                 </Tooltip>
-                
               ))}
             </div>
           </div>
@@ -984,7 +985,7 @@ export default function Sidebar({}) {
                     <li key={child.label}>
                       <Link
                         href={child.href || '#'}
-                        className="flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-4 lg:py-2"
+                        className="flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2"
                       >
                         {child.icon &&
                           React.cloneElement(child.icon, {
@@ -1002,10 +1003,6 @@ export default function Sidebar({}) {
           </>
         )}
       </div>
-
-
-
-
     </>
   );
 }

@@ -24,7 +24,7 @@ const Stepper = ({ currentStep }) => {
         {[1, 2, 3].map((step, index) => (
           <div key={step} className="flex items-center">
             <div
-              className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full md:h-12 md:w-12 ${currentStep >= step ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+              className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full md:h-12 md:w-12 ${currentStep >= step ? 'bg-primary text-white' : 'bg-gray-300'}`}
             >
               {step}
             </div>
@@ -32,7 +32,7 @@ const Stepper = ({ currentStep }) => {
             {/* Line Between Circles */}
             {index < 2 && (
               <div
-                className={`absolute h-[2px] w-[100%] ${currentStep >= step + 1 ? 'bg-blue-500' : 'bg-gray-300'} mx-2`}
+                className={`absolute h-[2px] w-[100%] ${currentStep >= step + 1 ? 'bg-primary' : 'bg-gray-300'} mx-2`}
               ></div>
             )}
           </div>
@@ -44,7 +44,7 @@ const Stepper = ({ currentStep }) => {
 
 const Step1 = ({ jobType, handleJobTypeChange, setValue, value }) => {
   console.log('valur>>>', value);
-
+const placeholderData = "Select job type"
   const handleValueChange = (newValue) => {
     setValue(newValue);
     handleJobTypeChange(newValue);
@@ -67,7 +67,7 @@ const Step1 = ({ jobType, handleJobTypeChange, setValue, value }) => {
           size="large"
           onChange={handleValueChange}
           suffixIcon={suffix}
-          placeholder="Select job type"
+          placeholder={placeholderData}
           options={[
             { value: 'ServiceBased', label: 'Service Based' },
             { value: 'ContractBased', label: 'Contract Based' },
