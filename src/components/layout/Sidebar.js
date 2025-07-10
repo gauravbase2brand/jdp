@@ -1,28 +1,12 @@
 'use client';
-import { RxCross1, RxHamburgerMenu } from 'react-icons/rx';
+import { RxHamburgerMenu } from 'react-icons/rx';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {
-  FiBarChart2,
-  FiUser,
-  FiSettings,
-  FiBell,
-  FiBriefcase,
-  FiDollarSign,
-  FiBox,
-  FiUsers,
-  FiUserPlus,
-  FiUserCheck,
-  FiPackage,
-} from 'react-icons/fi';
 import logofirst from '../../../public/images/logofirst.svg';
 import Image from 'next/image';
 import adminuser from '../../../public/images/icons/admin user.svg'; // Update this path as per your directory
-import { GrHomeRounded } from 'react-icons/gr';
-import { BiUser } from 'react-icons/bi';
-import BriefcaseIcon from '../../../public/images/briefcase.svg';
 import { Tooltip } from 'antd';
-
+import { usePathname } from 'next/navigation';
 const menuItems = [
   {
     label: 'Dashboard',
@@ -50,7 +34,7 @@ const menuItems = [
     children: [
       {
         label: 'Analytics',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +68,7 @@ const menuItems = [
       },
       {
         label: 'Financial Overview',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +98,7 @@ const menuItems = [
       },
       {
         label: 'Jobs overview',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +155,7 @@ const menuItems = [
 
       {
         label: 'Inventory Insights',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +208,7 @@ const menuItems = [
       },
       {
         label: 'Roles & Responsibilities ',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +226,7 @@ const menuItems = [
       },
       {
         label: 'Alerts &  Reminders ',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -268,7 +252,7 @@ const menuItems = [
       },
       {
         label: 'Configuration ',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -446,7 +430,7 @@ const menuItems = [
       },
       {
         label: 'Staff',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -549,7 +533,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -567,7 +551,7 @@ const menuItems = [
       },
       {
         label: 'Staff',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -681,7 +665,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -699,7 +683,7 @@ const menuItems = [
       },
       {
         label: 'Staff',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -804,7 +788,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -822,7 +806,7 @@ const menuItems = [
       },
       {
         label: 'Staff',
-        href: '/Dashboard/analytics/finance',
+        href: '',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -899,6 +883,7 @@ const menuItems = [
 ];
 
 export default function Sidebar({}) {
+  const pathname = usePathname();
   // which section is open
   const [menuOpen, setMenuOpen] = useState(true);
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -935,12 +920,10 @@ export default function Sidebar({}) {
                   key={item.label}
                 >
                   <button
-                  onClick={() => {
-    setActiveSection(item.label);
-    setMenuOpen(true);
-  }}
-                      
-                   
+                    onClick={() => {
+                      setActiveSection(item.label);
+                      setMenuOpen(true);
+                    }}
                     className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
                       activeSection === item.label
                         ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]'
@@ -985,7 +968,11 @@ export default function Sidebar({}) {
                     <li key={child.label}>
                       <Link
                         href={child.href || '#'}
-                        className="flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2"
+                        className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
+                          pathname === child.href
+                            ? 'bg-[#00a2ff42] text-[#00A1FF]'
+                            : ''
+                        }`}
                       >
                         {child.icon &&
                           React.cloneElement(child.icon, {

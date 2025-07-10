@@ -135,7 +135,7 @@ const JobsTables = () => {
       case 'Completed':
         return 'text-green-500 font-medium';
       case 'Delayed':
-        return 'text-orange-500 font-medium';
+        return 'text-orange-500 font-medium ';
       default:
         return '';
     }
@@ -328,7 +328,7 @@ const JobsTables = () => {
                           </td>
                           <td className="min-w-[180px] px-4 py-3 text-[#2B2B2B] md:w-auto">
                             <span
-                              className={`rounded-full border-[1.5px] p-1.5 text-sm ${getStatusClass(user.CompletedTask)}`}
+                              className={`rounded-full border-[1.5px] p-1 px-2 text-xs hover:scale-110 cursor-pointer ${getStatusClass(user.CompletedTask)}`}
                             >
                               {user.CompletedTask}
                             </span>
