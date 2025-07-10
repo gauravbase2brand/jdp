@@ -91,11 +91,11 @@ tr:nth-child(even) {
   font-size: 16px;
 }
 
-.ant-picker-input > input {
+/* .ant-picker-input > input {
   font-size: 1rem !important; 
   font-weight: 600 !important; 
   color: #000000e0 !important; 
-}
+} */
 button{
   cursor: pointer;
 }

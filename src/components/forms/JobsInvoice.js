@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import { Select } from 'antd';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Button from '../ui/Button';
 import { useRouter } from 'next/navigation';
-const JobsInvoice = ({step, setStep}) => {
+import JobsInvoiceForm from './JobsInvoiceForm';
+const JobsInvoice = ({ step, setStep }) => {
   const [activeTab, setActiveTab] = useState('transactions');
   const [textAreaData, setTextAreaData] = useState('');
   const [inviocepopop, setinviocepopop] = useState(true);
+  console.log();
+
   const showTab = (tabName) => {
     setActiveTab(tabName);
   };
@@ -18,13 +22,12 @@ const JobsInvoice = ({step, setStep}) => {
   const router = useRouter();
 
   const handleRowClick = (title) => {
-    // router.push(`${title}`)
     setinviocepopop(false);
-    console.log(title , ":thissis is title");
-    setStep(step+1)
-    
- 
+    console.log(title, ':thissis is title');
+    // setStep(step + 1);
+    console.log('Invoice PopUp State:', inviocepopop);
   };
+
   const tableData = [
     {
       title: 'Acme Plumbing',
@@ -470,6 +473,7 @@ const JobsInvoice = ({step, setStep}) => {
       ) : (
         <>
           <div>invoice popop in procress </div>
+          <JobsInvoiceForm/>
         </>
       )}
     </>

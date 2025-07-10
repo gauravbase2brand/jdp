@@ -1,5 +1,5 @@
 import { SiGooglemaps } from 'react-icons/si';
-import { DatePicker } from 'antd';
+import { DatePicker, Input } from 'antd';
 import React, { useState } from 'react';
 import { Select } from 'antd';
 import InputCustom from '../ui/InputFiels';
@@ -64,21 +64,17 @@ const ContractBasedJob = ({  }) => {
               ]}
             />
           </div>
-          <div>
-            <InputCustom
-              InputType="text"
-              placeholder="Enter job id."
-              InputLabl="Job Id."
-              isRequiredLabel={true}
-            />
+          
+
+               <div>
+              <label className="text-sm text-gray-600 mb-2">Job Id.<span className="text-red-500">*</span></label>
+          <Input size="large" placeholder="Enter job id." type='url' style={{borderRadius:"20px"}} />
           </div>
-          <div>
-            <InputCustom
-              InputType="text"
-              placeholder="Enter job title"
-              InputLabl="Job Title"
-              isRequiredLabel={true}
-            />
+         
+          
+               <div>
+              <label className="text-sm text-gray-600 mb-2">Job Title<span className="text-red-500">*</span></label>
+          <Input size="large" placeholder="Enter job title" type='url' style={{borderRadius:"20px"}} />
           </div>
           <div>
             <span className="mb-1 block text-sm font-medium text-gray-700">
@@ -111,15 +107,15 @@ const ContractBasedJob = ({  }) => {
           </div>
         </div>
         <div className="mt-3">
-          <div>
-            <InputCustom
-              InputType="url"
-              placeholder="Enter address"
-              InputLabl="Address"
-              isRequiredLabel={true}
-              icon2={<SiGooglemaps />}
-            />
+        
+              <div style={{ position: 'relative' }}>
+              <label className="text-sm text-gray-600 mb-2">Address<span className="text-red-500">*</span></label>
+          <Input size="large" placeholder="Enter address" type='url' style={{borderRadius:"20px"}} />
+           <SiGooglemaps className='absolute right-[10px] top-[53%] text-gray-600'
+       
+      />
           </div>
+         
         </div>
         <div>
           <div className="mt-3 mb-6 grid grid-cols-2 gap-3">

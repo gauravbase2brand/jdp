@@ -1,5 +1,5 @@
 import { SiGooglemaps } from 'react-icons/si';
-import { DatePicker, TimePicker } from 'antd';
+import { DatePicker, Input, TimePicker } from 'antd';
 import React, { useState } from 'react';
 import { Select } from 'antd';
 import InputCustom from '../ui/InputFiels';
@@ -21,13 +21,13 @@ const ServiceBasedJob = ({}) => {
       <form>
         <div className="grid grid-cols-2 items-end gap-2">
           <div>
-            <InputCustom
-              InputType="text"
-              placeholder="Enter job id."
-              InputLabl="Job Id."
-              isRequiredLabel={true}
-            />
+              <label className="text-sm text-gray-600 mb-2">Job Id.<span className="text-red-500">*</span></label>
+          <Input size="large" placeholder="Enter job id." type='text' style={{borderRadius:"20px"}} />
           </div>
+
+        
+        
+     
           <div>
             <span className="mb-1 block text-sm font-medium text-gray-700">
               Billing Status <span className="text-red-500">*</span>
@@ -239,14 +239,10 @@ const ServiceBasedJob = ({}) => {
             />
           </div>
 
-          <div>
-            <InputCustom
-              InputType="url"
-              placeholder="Enter address"
-              InputLabl="Address"
-              isRequiredLabel={true}
-              icon2={<SiGooglemaps />}
-            />
+       
+           <div>
+              <label className="text-sm text-gray-600 mb-2">Address<span className="text-red-500">*</span></label>
+          <Input size="large" placeholder="Enter address" type='url' style={{borderRadius:"20px"}} />
           </div>
           <div>
             <span className="mb-1 block text-sm font-medium text-gray-700">

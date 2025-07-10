@@ -279,6 +279,7 @@ const JobsTables = () => {
               <div>
                 <div className="scrollbar-webkit relative mt-8 overflow-x-auto rounded-3xl">
                   <table className="min-w-full bg-white text-base">
+                  
                     <thead>
                       <tr className="bg-white text-left text-black">
                         <th className="px-4 py-3 text-[#2B2B2B]">
@@ -289,7 +290,7 @@ const JobsTables = () => {
                         <th className="px-4 py-3">Assigned To</th>
                         <th className="px-4 py-3">Date Assigned</th>
                         <th className="px-4 py-3">Due Date</th>
-                        <th className="px-4 py-3">Linked Invoice</th>
+                        <th className="px-4 py-3">Invoice</th>
                         <th className="px-4 py-3">Billing Status</th>
                         <th className="px-4 py-3">Completion Status</th>
                         <th className="px-4 py-3">Action</th>
@@ -305,7 +306,7 @@ const JobsTables = () => {
                               onChange={(e) => handleSelectUser(e, user.name)}
                             />
                           </td>
-                          <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[130px] px-4 py-3 text-[#2B2B2B] md:w-auto">
                             {user.JobID}
                           </td>
                           <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
@@ -317,13 +318,13 @@ const JobsTables = () => {
                           <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
                             {user.Date_Assigned}
                           </td>
-                          <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[130px] px-4 py-3 text-[#2B2B2B] md:w-auto">
                             {user.Due_Date}
                           </td>
-                          <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto">
                             {user.Linked_Invoice}
                           </td>
-                          <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto">
                             {user.Billing_Status}
                           </td>
                           <td className="min-w-[180px] px-4 py-3 text-[#2B2B2B] md:w-auto">

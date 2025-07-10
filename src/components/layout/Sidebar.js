@@ -882,11 +882,14 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar({}) {
+export default function Sidebar({ setOpening }) {
   const pathname = usePathname();
-  // which section is open
+
   const [menuOpen, setMenuOpen] = useState(true);
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    setOpening(!menuOpen);
+  };
 
   const [activeSection, setActiveSection] = useState(menuItems[0].label);
 
@@ -951,7 +954,7 @@ export default function Sidebar({}) {
 
         {menuOpen && (
           <>
-            <aside className="flex w-[250px] flex-1 flex-col bg-white p-2 rounded-r-4xl border-r-1 border-r-gray-200 ">
+            <div className="flex w-[250px] flex-1 flex-col rounded-r-4xl border-r-1 border-r-gray-200 bg-white p-2">
               {/* header */}
               <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
                 {current.label}
@@ -965,35 +968,35 @@ export default function Sidebar({}) {
                       { label: current.label, href: current.href },
                     ]
                   ).map((child) => (
-
-                         <Tooltip
-                  placement="rightTop"
-                  title={child.label}
-                key={child.label}
-                >
-                    <li >
-                      <Link
-                        href={child.href || '#'}
-                        className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
-                          pathname === child.href
-                            ? 'bg-[#00a2ff42] text-[#00A1FF]'
-                            : ''
-                        }`}
-                      >
-                        {child.icon &&
-                          React.cloneElement(child.icon, {
-                            className: 'h-6 w-6 text-gray-500 hover:scale-105',
-                          })}
-                        <span className="ml-3 text-[13px] lg:text-sm">
-                          {child.label}
-                        </span>
-                      </Link>
-                    </li>
+                    <Tooltip
+                      placement="rightTop"
+                      title={child.label}
+                      key={child.label}
+                    >
+                      <li>
+                        <Link
+                          href={child.href || '#'}
+                          className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
+                            pathname === child.href
+                              ? 'bg-[#00a2ff42] text-[#00A1FF]'
+                              : ''
+                          }`}
+                        >
+                          {child.icon &&
+                            React.cloneElement(child.icon, {
+                              className:
+                                'h-6 w-6 text-gray-500 hover:scale-105',
+                            })}
+                          <span className="ml-3 text-[13px] lg:text-sm">
+                            {child.label}
+                          </span>
+                        </Link>
+                      </li>
                     </Tooltip>
                   ))}
                 </ul>
               </nav>
-            </aside>
+            </div>
           </>
         )}
       </div>
