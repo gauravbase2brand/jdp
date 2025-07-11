@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }) {
         {/* Main content */}
         <main className="flex-1 lg:pl-6 lg:pr-6 pl-4 pr-4 pb-6 lg:pt-3 lg:pb-6">
           <Header />
-         <div className={`${opening ? '  xl:ml-[300px]' : 'ms-[60px] xl:m-auto xl:container 2xl:max-w-7xl'} space-y-6 `}>
+         <div className={`${opening ? '  xl:ml-[330px]' : 'md:ms-[60px] ms-[50px] xl:m-auto xl:container xl:max-w-6xl 2xl:max-w-7xl'} space-y-6 `}>
            <div className="">{children}</div>
          </div>
         </main>

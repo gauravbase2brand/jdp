@@ -119,7 +119,7 @@ const JobsInvoice = ({ step, setStep }) => {
               <div className="relative mb-3 rounded-3xl bg-white p-3 md:p-6">
                 <button
                   onClick={handelTogle}
-                  className="bg-primary animate-popup absolute top-[-5px] right-4 rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
+                  className="bg-primary animate-popup absolute top-[15px] right-[-20px] rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
                 >
                   {togle ? (
                     <>
@@ -472,7 +472,7 @@ const JobsInvoice = ({ step, setStep }) => {
         </>
       ) : (
         <>
-          <div>invoice popop in procress </div>
+         
           <JobsInvoiceForm/>
         </>
       )}

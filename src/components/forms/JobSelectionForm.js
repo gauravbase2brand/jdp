@@ -61,7 +61,7 @@ const placeholderData = "Select job type"
       <div className="m-a flex justify-center">
         <Select
           maxTagCount={MAX_COUNT}
-          value={value}
+           value={value || undefined}
           style={{ width: '80%', borderRadius: '!important 30px' }}
           className="m-auto"
           size="large"

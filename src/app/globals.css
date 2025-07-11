@@ -6,12 +6,12 @@
   --primary: #00a1ff; /* Primary color */
   --secondary: #ffce00; /* Secondary color */
   --ternary: #4682b4; /* Ternary color */
-  --lightprimary: #aa92d61a;
+  --lightprimary:#00A1FF;
   --lightsecondary: #ffce00;
   --darktext: #161616;
   --whitetext: #ffffff;
   --HeadingText: #3d3d3d;
-  --lightext: #333;
+  --lightext: #2B2B2B;
 
   --font-geist-sans: 'Geist Sans', sans-serif;
   --font-geist-mono: 'Geist Mono', monospace;
