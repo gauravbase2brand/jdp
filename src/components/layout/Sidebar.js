@@ -1,15 +1,18 @@
 'use client';
+import { Spin as Hamburger } from 'hamburger-react';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import logofirst from '../../../public/images/logofirst.svg';
 import Image from 'next/image';
 import adminuser from '../../../public/images/icons/admin user.svg'; // Update this path as per your directory
-import { Tooltip } from 'antd';
-import { usePathname } from 'next/navigation';
+import { Select, Tooltip } from 'antd';
+import { usePathname, useRouter } from 'next/navigation';
+import { IoIosArrowForward } from 'react-icons/io';
 const menuItems = [
   {
     label: 'Dashboard',
+    href: 'abc',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +37,7 @@ const menuItems = [
     children: [
       {
         label: 'Analytics',
-        href: '',
+        href: 'analytics',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -278,6 +281,7 @@ const menuItems = [
   // second
   {
     label: 'User',
+    href: 'dashboard',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -299,7 +303,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '/dashboard/all',
+        href: 'all',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -395,6 +399,7 @@ const menuItems = [
   // third
   {
     label: 'Jobs',
+    href: 'dashboard/jobs',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -412,7 +417,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '/dashboard/jobs',
+        href: 'jobs',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -509,6 +514,7 @@ const menuItems = [
 
   {
     label: 'Custom',
+    href: 'dashboard',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -533,7 +539,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '',
+        href: 'all',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -629,6 +635,7 @@ const menuItems = [
   // ffifth
   {
     label: 'News',
+    href: 'sd',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -665,7 +672,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '',
+        href: 'all',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -760,6 +767,7 @@ const menuItems = [
   // sixth
   {
     label: 'Draft',
+    href: 'gf',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -788,7 +796,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: '',
+        href: 'all',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -884,14 +892,21 @@ const menuItems = [
 
 export default function Sidebar({ setOpening }) {
   const pathname = usePathname();
-
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(true);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     setOpening(!menuOpen);
   };
-
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedItem, setSelectedItem] = useState('');
+  const items = [
+    'Service Calls 5769 Sunnybrook Cr...',
+    '2805 Maplewood Cir E Palladino',
+    '2805 N Willow Dr Near Res.',
+  ];
   const [activeSection, setActiveSection] = useState(menuItems[0].label);
+  console.log('activeSection', activeSection);
 
   // find the full object for the active section
   const current = menuItems.find((item) => item.label === activeSection);
@@ -899,15 +914,25 @@ export default function Sidebar({ setOpening }) {
   return (
     <>
       <div className="flex h-screen">
-        <div
-          className={`p-3' absolute top-[15px] z-20 ${menuOpen ? 'right-[-40px] z-20' : 'left-[90px]'} `}
+        <Tooltip
+          placement="rightTop"
+          title={menuOpen === true ? 'Close' : 'Open'}
         >
-          <button onClick={toggleMenu} className="">
-            <>
-              <RxHamburgerMenu className="cursor-pointer" fontSize={25} />
-            </>
-          </button>
-        </div>
+          <div
+            className={`absolute top-[15px] z-20 ${menuOpen ? 'right-[-40px]' : 'left-[90px]'}`}
+          >
+            {/* Hamburger Component */}
+
+            <Hamburger
+              toggled={menuOpen} // Pass the isOpen state to control the icon animation
+              toggle={toggleMenu} // Update the isOpen state when clicked
+              color="#2B2B2B"
+              direction="left" // Direction of the animation
+              size={25}
+              className="cursor-pointer"
+            />
+          </div>
+        </Tooltip>
 
         <nav className="flex w-15 flex-col items-center justify-between border-r border-gray-200 bg-white p-2 py-4 md:w-17 md:p-3">
           <div className="flex flex-col items-center justify-center space-y-4">
@@ -922,21 +947,23 @@ export default function Sidebar({ setOpening }) {
                   title={item.label}
                   key={item.label}
                 >
-                  <button
-                    onClick={() => {
-                      setActiveSection(item.label);
-                      setMenuOpen(true);
-                    }}
-                    className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
-                      activeSection === item.label
-                        ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]'
-                        : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
-                    } `}
-                  >
-                    {React.cloneElement(item.icon, {
-                      className: ' md:h-6 md:w-6 w-5 ',
-                    })}
-                  </button>
+                  <Link href={`/${item.href}`}>
+                    <button
+                      onClick={() => {
+                        setActiveSection(item.label);
+                        setMenuOpen(true);
+                      }}
+                      className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
+                        activeSection === item.label
+                          ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]'
+                          : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
+                      } `}
+                    >
+                      {React.cloneElement(item.icon, {
+                        className: ' md:h-6 md:w-6 w-5 ',
+                      })}
+                    </button>
+                  </Link>
                 </Tooltip>
               ))}
             </div>
@@ -956,46 +983,124 @@ export default function Sidebar({ setOpening }) {
           <>
             <div className="flex w-[250px] flex-1 flex-col rounded-r-4xl border-r-1 border-r-gray-200 bg-white p-2">
               {/* header */}
-              <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
-                {current.label}
-              </div>
+              {activeSection === 'Jobs' ? (
+                 <div className="flex flex-col pt-2 max-w-md mx-auto">
+      {/* Custom Filter Dropdown */}
+      <div className="mb-4 flex items-center space-x-2 gap-2">
+        <Select
+              showSearch
+              style={{ width: '100%', borderRadius:'5px'}}
+              size='medium'
+              className="!h-10"
+              placeholder="Custom "
+              optionFilterProp="label"
+              filterSort={(optionA, optionB) =>
+                (optionA?.label ?? '')
+                  .toLowerCase()
+                  .localeCompare((optionB?.label ?? '').toLowerCase())
+              }
+              options={[
+                {
+                  value: '1',
+                  label: 'Completed',
+                },
+                {
+                  value: '2',
+                  label: 'Completed',
+                },
+                {
+                  value: '3',
+                  label: 'Delayed',
+                },
+                {
+                  value: '4',
+                  label: 'Delayed',
+                },
+                {
+                  value: '5',
+                  label: 'Pending',
+                },
+                {
+                  value: '6',
+                  label: 'Pending',
+                },
+              ]}
+            />
+        <button className="border-gray-600 border-1 text-white py-1 px-4 rounded-full h-full">
+         <IoIosArrowForward  className='text-black'/>
+        </button>
+      </div>
 
-              {/* child links */}
-              <nav className="overflow-y-auto">
-                <ul className="flex flex-col gap-2 lg:gap-2 2xl:gap-3">
-                  {(
-                    current.children || [
-                      { label: current.label, href: current.href },
-                    ]
-                  ).map((child) => (
-                    <Tooltip
-                      placement="rightTop"
-                      title={child.label}
-                      key={child.label}
-                    >
-                      <li>
-                        <Link
-                          href={child.href || '#'}
-                          className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
-                            pathname === child.href
-                              ? 'bg-[#00a2ff42] text-[#00A1FF]'
-                              : ''
-                          }`}
+      {/* Search Bar */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="p-2 w-full border rounded"
+        />
+      </div>
+
+      {/* List of Items */}
+      <div className="space-y-2">
+        {items
+          .filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase()))
+          .map((item, index) => (
+            <div
+              key={index}
+              className={`p-2 bg-gray-100 rounded cursor-pointer hover:bg-gray-200`}
+              onClick={() => setSelectedItem(item)}
+            >
+              <span>◆ {item}</span>
+            </div>
+          ))}
+      </div>
+    </div>
+              ) : (
+                <>
+                  <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
+                    {current.label}
+                  </div>
+
+                  {/* child links */}
+                  <nav className="overflow-y-auto">
+                    <ul className="flex flex-col gap-2 lg:gap-2 2xl:gap-3">
+                      {(
+                        current.children || [
+                          { label: current.label, href: current.href },
+                        ]
+                      ).map((child) => (
+                        <Tooltip
+                          placement="rightTop"
+                          title={child.label}
+                          key={child.label}
                         >
-                          {child.icon &&
-                            React.cloneElement(child.icon, {
-                              className:
-                                'h-6 w-6 text-gray-500 hover:scale-105',
-                            })}
-                          <span className="ml-3 text-[13px] lg:text-sm">
-                            {child.label}
-                          </span>
-                        </Link>
-                      </li>
-                    </Tooltip>
-                  ))}
-                </ul>
-              </nav>
+                          <li>
+                            <Link
+                              href={`dashbord/${child.href}` || '#'}
+                              className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
+                                pathname === child.href
+                                  ? 'bg-[#00a2ff42] text-[#00A1FF]'
+                                  : ''
+                              }`}
+                            >
+                              {child.icon &&
+                                React.cloneElement(child.icon, {
+                                  className:
+                                    'h-6 w-6 text-gray-500 hover:scale-105',
+                                })}
+                              <span className="ml-3 text-[13px] lg:text-sm">
+                                {child.label}
+                              </span>
+                            </Link>
+                          </li>
+                        </Tooltip>
+                      ))}
+                    </ul>
+                  </nav>
+                </>
+              )}
             </div>
           </>
         )}

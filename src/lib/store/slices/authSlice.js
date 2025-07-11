@@ -12,11 +12,11 @@ export const loginUser = createAsyncThunk(
         },
         body: JSON.stringify(credentials),
       });
-      
+
       if (!response.ok) {
         throw new Error('Login failed');
       }
-      
+
       const data = await response.json();
       localStorage.setItem('token', data.token);
       return data;
@@ -37,6 +37,8 @@ const initialState = {
   isLoading: false,
   isAuthenticated: false,
   error: null,
+  title: '',
+  inviocepopop: true,
 };
 
 const authSlice = createSlice({
@@ -50,6 +52,12 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = true;
+    },
+    setTitle: (state, action) => {
+      state.title = action.payload; // Update the language
+    },
+    setinviocepopop: (state, action) => {
+      state.inviocepopop = action.payload; // Update the language
     },
   },
   extraReducers: (builder) => {
@@ -78,5 +86,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearError, setCredentials } = authSlice.actions;
+export const { clearError, setCredentials, setTitle, setinviocepopop } =
+  authSlice.actions;
 export default authSlice.reducer;

@@ -5,6 +5,8 @@ import { Select } from 'antd';
 import ContractBasedJob from './ContractBasedJob';
 import ServiceBasedJob from './ServiceBasedJob';
 import JobsInvoice from './JobsInvoice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setinviocepopop, setTitle } from '@/lib/store/slices/authSlice';
 // Define the MAX_COUNT constant, you can adjust this based on your requirement
 const MAX_COUNT = 1; // Make sure to define it
 
@@ -44,7 +46,7 @@ const Stepper = ({ currentStep }) => {
 
 const Step1 = ({ jobType, handleJobTypeChange, setValue, value }) => {
   console.log('valur>>>', value);
-const placeholderData = "Select job type"
+  const placeholderData = 'Select job type';
   const handleValueChange = (newValue) => {
     setValue(newValue);
     handleJobTypeChange(newValue);
@@ -61,7 +63,7 @@ const placeholderData = "Select job type"
       <div className="m-a flex justify-center">
         <Select
           maxTagCount={MAX_COUNT}
-           value={value || undefined}
+          value={value || undefined}
           style={{ width: '80%', borderRadius: '!important 30px' }}
           className="m-auto"
           size="large"
@@ -79,9 +81,11 @@ const placeholderData = "Select job type"
 };
 
 const JobSelectionForm = ({}) => {
+  const dispatch = useDispatch();
   const [step, setStep] = useState(1);
   const [jobType, setJobType] = useState([]);
   const [value, setValue] = useState('');
+  const rowTilte = useSelector((state) => state.auth.title);
 
   const handleNext = () => {
     if (step < 3) {
@@ -93,6 +97,8 @@ const JobSelectionForm = ({}) => {
     if (step > 1) {
       setStep(step - 1);
       setValue('');
+      dispatch(setTitle(''));
+      dispatch(setinviocepopop(true));
     }
   };
 
@@ -123,27 +129,42 @@ const JobSelectionForm = ({}) => {
             <ContractBasedJob />
           ))}
 
-        {step === 3 && <JobsInvoice step={step} setStep={setStep}/>}
-
-
-
-
-
-        <div className="flex justify-center gap-3 pt-4">
-          <button
-            onClick={handleBack}
-            disabled={step === 1}
-            className="rounded-full border-[1.5px] px-6 py-2 text-gray-700 disabled:bg-gray-200"
+        {step > 2 && <JobsInvoice step={step} setStep={setStep} />}
+        <div
+          className={`${rowTilte !== '' && 'flex items-center justify-around'}`}
+        >
+          {rowTilte !== '' && (
+            <button className="rounded-full bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300">
+              print
+            </button>
+          )}
+          <div
+            className={`${rowTilte !== '' ? 'flex justify-center gap-3' : 'flex justify-center gap-3 pt-4'}`}
           >
-            Back
-          </button>
-          <button
-            onClick={handleNext}
-            disabled={step === 1 && jobType.length === 0}
-            className="rounded-full bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
-          >
-            Next
-          </button>
+            {step > 1 && (
+              <button
+                onClick={handleBack}
+                disabled={step === 1}
+                className="rounded-full border-[1.5px] px-6 py-2 text-gray-700 disabled:bg-gray-200"
+              >
+                Back
+              </button>
+            )}
+            {step < 3 && (
+              <button
+                onClick={handleNext}
+                disabled={step === 1 && jobType.length === 0}
+                className="rounded-full bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
+              >
+                Next
+              </button>
+            )}
+            {rowTilte !== '' && (
+              <button className="rounded-full bg-blue-500 px-6 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300">
+                Edit $ save
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </>
