@@ -1,5 +1,6 @@
 'use client';
 import { Spin as Hamburger } from 'hamburger-react';
+
 import { RxHamburgerMenu } from 'react-icons/rx';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -12,7 +13,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 const menuItems = [
   {
     label: 'Dashboard',
-    href: '',
+
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -281,7 +282,7 @@ const menuItems = [
   // second
   {
     label: 'User',
-    href: 'dashboard/staff',
+
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -399,7 +400,7 @@ const menuItems = [
   // third
   {
     label: 'Jobs',
-    href: 'dashboard/jobs',
+    href: '/dashboard/jobs', //thiss is only for this route
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -514,7 +515,7 @@ const menuItems = [
 
   {
     label: 'Custom',
-    href: 'dashboard',
+    href: '',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -539,7 +540,7 @@ const menuItems = [
     children: [
       {
         label: 'All',
-        href: 'all',
+        href: '/dashboard/all',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -556,8 +557,8 @@ const menuItems = [
         ),
       },
       {
-        label: 'Staff',
-        href: '',
+        label: 'Staffid ',
+        href: '/dashboard/sssss',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -635,7 +636,7 @@ const menuItems = [
   // ffifth
   {
     label: 'News',
-    href: 'sd',
+    href: '',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -767,7 +768,7 @@ const menuItems = [
   // sixth
   {
     label: 'Draft',
-    href: 'gf',
+    href: '',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -919,7 +920,7 @@ export default function Sidebar({ setOpening }) {
           title={menuOpen === true ? 'Close' : 'Open'}
         >
           <div
-            className={`absolute top-[15px] z-20 ${menuOpen ? 'right-[-40px]' : 'left-[90px]'}`}
+            className={`absolute top-[10px] z-20 md:top-[15px] ${menuOpen ? 'right-[10px] md:right-[-40px]' : 'left-[60px] md:left-[90px]'}`}
           >
             {/* Hamburger Component */}
 
@@ -947,23 +948,27 @@ export default function Sidebar({ setOpening }) {
                   title={item.label}
                   key={item.label}
                 >
-                  <Link href={`/${item.href}`}>
-                    <button
-                      onClick={() => {
-                        setActiveSection(item.label);
-                        setMenuOpen(true);
-                      }}
-                      className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
-                        activeSection === item.label
-                          ? 'rounded-full bg-[#00a2ff42] text-[#00A1FF]'
-                          : 'text-gray-60sNamver:bg-gray-200 hover:bg-gray-200'
-                      } `}
-                    >
-                      {React.cloneElement(item.icon, {
-                        className: ' md:h-6 md:w-6 w-5 ',
-                      })}
-                    </button>
-                  </Link>
+                  <button
+                    key={item.label}
+                    onClick={() => {
+                      setActiveSection(item.label);
+                      setMenuOpen(true);
+
+                      // if there's an href on this item, navigate there
+                      if (item.href) {
+                        router.push(item.href);
+                      }
+                    }}
+                    className={`flex h-10 w-full flex-col items-center justify-center rounded-full p-2 transition hover:scale-105 ${
+                      activeSection === item.label
+                        ? 'bg-[#00a2ff42] text-[#00A1FF]'
+                        : 'text-gray-600 hover:bg-gray-200'
+                    } `}
+                  >
+                    {React.cloneElement(item.icon, {
+                      className: 'md:h-6 md:w-6 w-5',
+                    })}
+                  </button>
                 </Tooltip>
               ))}
             </div>
@@ -1033,19 +1038,19 @@ export default function Sidebar({ setOpening }) {
 
                   {/* Search Bar */}
                   <div className="mb-4">
-                  <Input.Search
-  size="large"
-  type="text"
-  placeholder="Search..."
-  value={searchQuery}
-  onChange={(e) => setSearchQuery(e.target.value)}
-  className="!bg-transparent !border-none focus:!shadow-none"
-  style={{
-    background: 'transparent',
-    border: 'none',
-    boxShadow: 'none'
-  }}
-/>
+                    <Input.Search
+                      size="large"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="!border-none !bg-transparent focus:!shadow-none"
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        boxShadow: 'none',
+                      }}
+                    />
                   </div>
 
                   {/* List of Items */}
@@ -1057,7 +1062,7 @@ export default function Sidebar({ setOpening }) {
                       .map((item, index) => (
                         <div
                           key={index}
-                          className={`cursor-pointer  p-1.5 hover:bg-gray-100 text-xs text-lightext border-b-1 border-gray-200`}
+                          className={`text-lightext cursor-pointer border-b-1 border-gray-200 p-1.5 text-xs hover:bg-gray-100`}
                           onClick={() => setSelectedItem(item)}
                         >
                           <span>◆ {item}</span>
@@ -1086,7 +1091,7 @@ export default function Sidebar({ setOpening }) {
                         >
                           <li>
                             <Link
-                              href={`dashboard/${child.href}` || '#'}
+                              href={`${child.href}` || '#'}
                               className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
                                 pathname === child.href
                                   ? 'bg-[#00a2ff42] text-[#00A1FF]'
