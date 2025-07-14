@@ -90,7 +90,7 @@ const JobsInvoiceForm = () => {
                   </label>
                   <DatePicker
                     size="large"
-                    style={{ width: '100%', borderRadius: '20px' }}
+                    style={{ width: '100%', borderRadius: '10px' }}
                     placeholder="Select Date"
                   />
                 </div>
@@ -101,7 +101,7 @@ const JobsInvoiceForm = () => {
                   <Input
                     size="large"
                     placeholder="Enter invoice number"
-                    style={{ borderRadius: '20px' }}
+                    style={{ borderRadius: '10px' }}
                   />
                 </div>
               </div>
@@ -110,7 +110,7 @@ const JobsInvoiceForm = () => {
                 <Input.TextArea
                   rows={4}
                   placeholder="Enter billing details"
-                  style={{ borderRadius: '20px' }}
+                  style={{ borderRadius: '10px' }}
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@ const JobsInvoiceForm = () => {
                 <Input
                   size="large"
                   placeholder="P.O.No."
-                  style={{ borderRadius: '20px' }}
+                  style={{ borderRadius: '10px' }}
                 />
               </div>
               <div>
@@ -129,14 +129,14 @@ const JobsInvoiceForm = () => {
                 <Input
                   size="large"
                   placeholder="NGM"
-                  style={{ borderRadius: '20px' }}
+                  style={{ borderRadius: '10px' }}
                 />
               </div>
               <div>
                 <label className="mb-1 text-sm text-gray-600">Due Date</label>
                 <DatePicker
                   size="large"
-                  style={{ width: '100%', borderRadius: '20px' }}
+                  style={{ width: '100%', borderRadius: '10px' }}
                   placeholder="Enter Due Date"
                   onChange={handleDueDateChange}
                 />

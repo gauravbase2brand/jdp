@@ -116,10 +116,10 @@ const JobsInvoice = ({ step, setStep }) => {
       {inviocepopop ? (
         <div className="mt-8">
           <div className="mb-3 grid grid-cols-1">
-            <div className="relative mb-3 rounded-3xl bg-white p-3 md:p-6">
+            <div className="relative mb-3 rounded-3xl bg-white p-3 md:p-6 box-border">
               <button
                 onClick={handelTogle}
-                className="bg-primary animate-popup absolute top-[15px] right-[-20px] rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
+                className="bg-primary animate-popup absolute top-[10px] md:top-[15px] md:right-[-20px] right-[-10px] rounded-full p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100 active:opacity-50"
               >
                 {togle ? (
                   <>
@@ -133,42 +133,42 @@ const JobsInvoice = ({ step, setStep }) => {
               </button>
               {togle ? (
                 <>
-                  <div className="grid gap-8 md:grid-cols-2">
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     {/* Left Column: Job Information */}
                     <div>
                       <h2 className="text-xl font-semibold text-gray-700">
                         Job Information
                       </h2>
                       <div className="mt-4 space-y-2 text-sm text-gray-600">
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">Job ID:</span>
-                          <span className="font-semibold text-black">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">Job ID:</span>
+                          <span className="font-semibold text-black md:text-sm text-xs">
                             5769 Sunnybrook
                           </span>
                         </p>
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">
                             Customer Name:
                           </span>
-                          <span className="font-semibold text-black">
+                          <span className="font-semibold text-black md:text-sm text-xs">
                             Richard
                           </span>
                         </p>
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">
                             Job Status:
                           </span>
-                          <span className="font-semibold text-black">None</span>
+                          <span className="font-semibold text-black md:text-sm text-xs">None</span>
                         </p>
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">Bill To:</span>
-                          <span className="font-semibold text-black">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">Bill To:</span>
+                          <span className="font-semibold text-black md:text-sm text-xs">
                             Mag Outman
                           </span>
                         </p>
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">Address:</span>
-                          <span className="font-semibold text-black">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">Address:</span>
+                          <span className="font-semibold text-black md:text-sm text-xs">
                             5769 Sunnybrook Circle Mannerist MN 55345
                           </span>
                         </p>
@@ -181,24 +181,24 @@ const JobsInvoice = ({ step, setStep }) => {
                         Contact Information
                       </h3>
                       <div className="mt-4 space-y-2 text-sm text-gray-600">
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">Mobile:</span>
-                          <span className="font-semibold text-black">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">Mobile:</span>
+                          <span className="font-semibold text-black md:text-sm text-xs">
                             585-330-3923
                           </span>
                         </p>
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">Email:</span>
-                          <span className="font-semibold text-black">
+                        <p className="flex justify-between gap-3">
+                          <span className="md:text-sm font-medium text-xs">Email:</span>
+                          <span className="font-semibold text-black md:text-sm text-xs">
                             john@gmail.com
                           </span>
                         </p>
-                        <p className="flex justify-between">
-                          <span className="text-sm font-medium">
+                        <p className="flex justify-between gap-3 flex-wrap md:gap-3 gap-1">
+                          <span className="md:text-sm font-medium text-xs">
                             Assigned To:
                           </span>
-                          <div className="flex justify-end gap-3">
-                            <div>
+                          <div className="flex justify-end md:gap-3 gap-1 flex-wrap ">
+                            <div className='w-full md:w-auto'>
                               <span>Lead Labor</span>
                               <Select
                                 showSearch
@@ -242,7 +242,7 @@ const JobsInvoice = ({ step, setStep }) => {
                                 ]}
                               />
                             </div>
-                            <div>
+                            <div className='w-full md:w-auto'>
                               <span>Labor</span>
                               <Select
                                 showSearch
@@ -288,7 +288,7 @@ const JobsInvoice = ({ step, setStep }) => {
                             </div>
                           </div>
                         </p>
-                        <p className="flex justify-between">
+                        <p className="flex justify-between gap-3">
                           <span>Invoice Status:</span>
                           <span className="rounded-full border-[1.5px] p-1 px-2 font-semibold text-yellow-500">
                             Pending
@@ -310,7 +310,7 @@ const JobsInvoice = ({ step, setStep }) => {
                       <div className="text-gray-600">
                         <p className="flex items-center justify-end gap-3">
                           <span className="text-sm font-semibold">Job ID:</span>
-                          <span class="text-sm font-medium">
+                          <span class="md:text-sm font-medium text-xs">
                             5769 Sunnybrook
                           </span>
                         </p>
@@ -318,7 +318,7 @@ const JobsInvoice = ({ step, setStep }) => {
                           <span className="text-sm font-semibold">
                             Customer Name:
                           </span>
-                          <span class="text-sm font-medium">Richard </span>
+                          <span class="md:text-sm font-medium text-xs">Richard </span>
                         </p>
                       </div>
                     </div>

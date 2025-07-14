@@ -68,13 +68,13 @@ const ContractBasedJob = ({  }) => {
 
                <div>
               <label className="text-sm text-gray-600 mb-2">Job Id.<span className="text-red-500">*</span></label>
-          <Input size="large" placeholder="Enter job id." type='url' style={{borderRadius:"20px"}} />
+          <Input size="large" placeholder="Enter job id." type='url' style={{borderRadius:"10px"}} />
           </div>
          
           
                <div>
               <label className="text-sm text-gray-600 mb-2">Job Title<span className="text-red-500">*</span></label>
-          <Input size="large" placeholder="Enter job title" type='url' style={{borderRadius:"20px"}} />
+          <Input size="large" placeholder="Enter job title" type='url' style={{borderRadius:"10px"}} />
           </div>
           <div>
             <span className="mb-1 block text-sm font-medium text-gray-700">
@@ -110,7 +110,7 @@ const ContractBasedJob = ({  }) => {
         
               <div style={{ position: 'relative' }}>
               <label className="text-sm text-gray-600 mb-2">Address<span className="text-red-500">*</span></label>
-          <Input size="large" placeholder="Enter address" type='url' style={{borderRadius:"20px"}} />
+          <Input size="large" placeholder="Enter address" type='url' style={{borderRadius:"10px"}} />
            <SiGooglemaps className='absolute right-[10px] top-[53%] text-gray-600'
        
       />

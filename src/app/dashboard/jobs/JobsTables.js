@@ -174,9 +174,9 @@ const handleClick =(tabname)=>{
           <div className="mb-3 grid grid-cols-1">
             <div className="">
               <div className="flex flex-wrap items-center justify-center gap-3 md:justify-between">
-                <div className="flex justify-between gap-3">
+                <div className="flex justify-between gap-3 flex-wrap">
                   <Tooltip
-                    title={newJobTooltip}
+                    title={newJobTooltip} 
                     placement="topLeft"
                     arrow
                     className="cursor-pointer"
@@ -192,7 +192,7 @@ const handleClick =(tabname)=>{
 
                   <ExpandableSearch />
                 </div>
-                <div className="mb-2 grid grid-cols-3 gap-1 md:grid-cols-3 md:gap-3">
+                <div className="mb-2 grid grid-cols-1 md:grid-cols-3 md:gap-3 gap-1 w-full lg:w-auto">
                   <SelectOptionAnt FilterInpur="Job Type" />
                   <SelectOptionAnt FilterInpur="Completion Status" />
                   <SelectOptionAnt FilterInpur="Sort By" />
@@ -225,7 +225,7 @@ const handleClick =(tabname)=>{
                       fill={activetab === 'All'? '#00A1FF':"#111827"}
                     />
                   </svg>
-                  <span className={` text-sm md:text-base ${activetab ===  'All' ? 'text-primary':' text-[#111827]'}`}>All</span>
+                  <span className={` text-sm  font-medium ${activetab ===  'All' ? 'text-primary':' text-[#111827]'}`}>All</span>
                 </button>
                 <button className={`flex items-center gap-2 rounded-full p-1 px-4 transition-transform duration-300 ease-in-out hover:scale-110 ${activetab === 'Service Based' ? 'bg-[#00a1ff45]':'' }`} onClick={()=> handleClick('Service Based')}>
                   <svg
@@ -240,7 +240,7 @@ const handleClick =(tabname)=>{
                       fill={activetab === 'Service Based' ? '#00A1FF' :'#111827'}
                     />
                   </svg>
-                <span className={` text-sm md:text-base ${activetab ===  'Service Based' ? 'text-primary':' text-[#111827]'}`}>Service Based</span>
+                <span className={` text-sm font-medium  ${activetab ===  'Service Based' ? 'text-primary':' text-[#111827]'}`}>Service Based</span>
                 </button>
 
                 <button className={`flex items-center gap-2 rounded-full p-1 px-4 transition-transform duration-300 ease-in-out hover:scale-110 ${activetab === 'Contract Based' ? 'bg-[#00a1ff45]':'' } `} onClick={()=>handleClick('Contract Based')}>
@@ -279,7 +279,7 @@ const handleClick =(tabname)=>{
                       </clipPath>
                     </defs>
                   </svg>
-                 <span className={` text-sm md:text-base ${activetab ===  'Contract Based' ? 'text-primary':' text-[#111827]'}`}>Contract Based</span>
+                 <span className={` text-sm font-medium  ${activetab ===  'Contract Based' ? 'text-primary':' text-[#111827]'}`}>Contract Based</span>
                 </button>
               </div>
               <div>
@@ -314,30 +314,30 @@ const handleClick =(tabname)=>{
                               onChange={(e) => handleSelectUser(e, user.name)}
                             />
                           </td>
-                          <td className="min-w-[130px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[130px] px-4 py-3 text-lightext md:w-auto text-sm">
                             {user.JobID}
                           </td>
-                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto">
-                            {user.Job_Type}
+                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto text-sm">
+                            {user.Job_Type} text-sm 
                           </td>
-                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto text-sm">
                             {user.AssignedTo}
                           </td>
-                          <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[150px] px-4 py-3 text-[#2B2B2B] md:w-auto text-sm ">
                             {user.Date_Assigned}
                           </td>
-                          <td className="min-w-[130px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[130px] px-4 py-3 text-[#2B2B2B] md:w-auto text-sm ">
                             {user.Due_Date}
                           </td>
-                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto text-sm ">
                             {user.Linked_Invoice}
                           </td>
-                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto">
+                          <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] md:w-auto text-sm ">
                             {user.Billing_Status}
                           </td>
                           <td className="min-w-[100px] px-4 py-3 text-[#2B2B2B] ">
                             <span
-                              className={`rounded-full border-[1.5px] p-1 px-2 text-xs hover:scale-110 cursor-pointer ${getStatusClass(user.CompletedTask)}`}
+                              className={`rounded-full border-[1.5px] p-1 px-2 text-xs hover:scale-110 cursor-pointer  text-sm ${getStatusClass(user.CompletedTask)}`}
                             >
                               {user.CompletedTask}
                             </span>

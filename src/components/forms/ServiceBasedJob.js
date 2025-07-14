@@ -22,7 +22,7 @@ const ServiceBasedJob = ({}) => {
         <div className="grid grid-cols-2 items-end gap-2">
           <div>
               <label className="text-sm text-gray-600 mb-2">Job Id.<span className="text-red-500">*</span></label>
-          <Input size="large" placeholder="Enter job id." type='text' style={{borderRadius:"20px"}} />
+          <Input size="large" placeholder="Enter job id." type='text' style={{ borderRadius: '10px'}} />
           </div>
 
         
@@ -125,7 +125,7 @@ const ServiceBasedJob = ({}) => {
 
               <DatePicker
                 size="large"
-                style={{ width: '100%', borderRadius: '20px' }}
+                style={{ width: '100%', borderRadius: '10px' }}
                 placeholder="Enter date"
               />
             </div>
@@ -234,7 +234,7 @@ const ServiceBasedJob = ({}) => {
 
             <DatePicker
               size="large"
-              style={{ width: '100%', borderRadius: '20px' }}
+              style={{ width: '100%', borderRadius: '10px' }}
               placeholder="Enter due date"
             />
           </div>
@@ -242,7 +242,7 @@ const ServiceBasedJob = ({}) => {
        
            <div>
               <label className="text-sm text-gray-600 mb-2">Address<span className="text-red-500">*</span></label>
-          <Input size="large" placeholder="Enter address" type='url' style={{borderRadius:"20px"}} />
+          <Input size="large" placeholder="Enter address" type='url' style={{ borderRadius: '10px'}} />
           </div>
           <div>
             <span className="mb-1 block text-sm font-medium text-gray-700">
@@ -251,7 +251,7 @@ const ServiceBasedJob = ({}) => {
 
             <TimePicker
               placeholder="00.00"
-              style={{ width: '100%', borderRadius: '20px' }}
+              style={{ width: '100%', borderRadius: '10px' }}
               size="large"
             />
           </div>

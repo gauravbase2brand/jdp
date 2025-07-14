@@ -6,13 +6,13 @@ import Link from 'next/link';
 import logofirst from '../../../public/images/logofirst.svg';
 import Image from 'next/image';
 import adminuser from '../../../public/images/icons/admin user.svg'; // Update this path as per your directory
-import { Select, Tooltip } from 'antd';
+import { Input, Select, Tooltip } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
 import { IoIosArrowForward } from 'react-icons/io';
 const menuItems = [
   {
     label: 'Dashboard',
-    href: 'abc',
+    href: '',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -281,7 +281,7 @@ const menuItems = [
   // second
   {
     label: 'User',
-    href: 'dashboard',
+    href: 'dashboard/staff',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +321,7 @@ const menuItems = [
       },
       {
         label: 'Staff',
-        href: '/dashboard/Staff',
+        href: 'staff',
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -984,79 +984,87 @@ export default function Sidebar({ setOpening }) {
             <div className="flex w-[250px] flex-1 flex-col rounded-r-4xl border-r-1 border-r-gray-200 bg-white p-2">
               {/* header */}
               {activeSection === 'Jobs' ? (
-                 <div className="flex flex-col pt-2 max-w-md mx-auto">
-      {/* Custom Filter Dropdown */}
-      <div className="mb-4 flex items-center space-x-2 gap-2">
-        <Select
-              showSearch
-              style={{ width: '100%', borderRadius:'5px'}}
-              size='medium'
-              className="!h-10"
-              placeholder="Custom "
-              optionFilterProp="label"
-              filterSort={(optionA, optionB) =>
-                (optionA?.label ?? '')
-                  .toLowerCase()
-                  .localeCompare((optionB?.label ?? '').toLowerCase())
-              }
-              options={[
-                {
-                  value: '1',
-                  label: 'Completed',
-                },
-                {
-                  value: '2',
-                  label: 'Completed',
-                },
-                {
-                  value: '3',
-                  label: 'Delayed',
-                },
-                {
-                  value: '4',
-                  label: 'Delayed',
-                },
-                {
-                  value: '5',
-                  label: 'Pending',
-                },
-                {
-                  value: '6',
-                  label: 'Pending',
-                },
-              ]}
-            />
-        <button className="border-gray-600 border-1 text-white py-1 px-4 rounded-full h-full">
-         <IoIosArrowForward  className='text-black'/>
-        </button>
-      </div>
+                <div className="mx-auto flex max-w-md flex-col pt-2">
+                  {/* Custom Filter Dropdown */}
+                  <div className="mb-4 flex items-center gap-2 space-x-2">
+                    <Select
+                      showSearch
+                      style={{ width: '100%', borderRadius: '5px' }}
+                      size="medium"
+                      className="!h-10"
+                      placeholder="Custom "
+                      optionFilterProp="label"
+                      filterSort={(optionA, optionB) =>
+                        (optionA?.label ?? '')
+                          .toLowerCase()
+                          .localeCompare((optionB?.label ?? '').toLowerCase())
+                      }
+                      options={[
+                        {
+                          value: '1',
+                          label: 'Completed',
+                        },
+                        {
+                          value: '2',
+                          label: 'Completed',
+                        },
+                        {
+                          value: '3',
+                          label: 'Delayed',
+                        },
+                        {
+                          value: '4',
+                          label: 'Delayed',
+                        },
+                        {
+                          value: '5',
+                          label: 'Pending',
+                        },
+                        {
+                          value: '6',
+                          label: 'Pending',
+                        },
+                      ]}
+                    />
+                    <button className="h-full rounded-full border-1 border-gray-600 px-4 py-1 text-white">
+                      <IoIosArrowForward className="text-black" />
+                    </button>
+                  </div>
 
-      {/* Search Bar */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 w-full border rounded"
-        />
-      </div>
+                  {/* Search Bar */}
+                  <div className="mb-4">
+                  <Input.Search
+  size="large"
+  type="text"
+  placeholder="Search..."
+  value={searchQuery}
+  onChange={(e) => setSearchQuery(e.target.value)}
+  className="!bg-transparent !border-none focus:!shadow-none"
+  style={{
+    background: 'transparent',
+    border: 'none',
+    boxShadow: 'none'
+  }}
+/>
+                  </div>
 
-      {/* List of Items */}
-      <div className="space-y-2">
-        {items
-          .filter((item) => item.toLowerCase().includes(searchQuery.toLowerCase()))
-          .map((item, index) => (
-            <div
-              key={index}
-              className={`p-2 bg-gray-100 rounded cursor-pointer hover:bg-gray-200`}
-              onClick={() => setSelectedItem(item)}
-            >
-              <span>◆ {item}</span>
-            </div>
-          ))}
-      </div>
-    </div>
+                  {/* List of Items */}
+                  <div className="space-y-2">
+                    {items
+                      .filter((item) =>
+                        item.toLowerCase().includes(searchQuery.toLowerCase())
+                      )
+                      .map((item, index) => (
+                        <div
+                          key={index}
+                          className={`cursor-pointer  p-1.5 hover:bg-gray-100 text-xs text-lightext border-b-1 border-gray-200`}
+                          onClick={() => setSelectedItem(item)}
+                        >
+                          <span>◆ {item}</span>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               ) : (
                 <>
                   <div className="px-4 py-3 text-sm font-semibold text-[##2B2B2B] uppercase dark:text-gray-400">
@@ -1078,7 +1086,7 @@ export default function Sidebar({ setOpening }) {
                         >
                           <li>
                             <Link
-                              href={`dashbord/${child.href}` || '#'}
+                              href={`dashboard/${child.href}` || '#'}
                               className={`flex items-center rounded-lg px-3 py-1 text-gray-700 hover:bg-gray-100 lg:px-3 lg:py-2 ${
                                 pathname === child.href
                                   ? 'bg-[#00a2ff42] text-[#00A1FF]'

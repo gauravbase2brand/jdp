@@ -23,7 +23,7 @@ const AntinputBox = ({inputInputLabel,isRequiredLabel}) => {
           value={address} // Bind the value to the state
           placeholder="Enter address"
           type="text"
-          style={{ borderRadius: '20px' }}
+          style={{ borderRadius: '10px' }}
           onChange={handleInputChange} // Update state on change
         />
       </div>
