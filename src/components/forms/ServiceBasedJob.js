@@ -25,15 +25,7 @@ const ServiceBasedJob = ({}) => {
       <form>
         <div className="grid grid-cols-2 items-end gap-2">
           <div>
-            {/* <label className="mb-2 text-sm text-gray-600">
-              Job Id.<span className="text-red-500">*</span>
-            </label>
-            <Input
-              size="large"
-              placeholder="Enter job id."
-              type="text"
-              style={{ borderRadius: '10px' }}
-            /> */}
+         
             <InputCustom
               placeholder="Enter job id."
               isRequiredLabel={true}
