@@ -1,11 +1,12 @@
 import React from 'react'
-import CreateUserData from './CreateUserData'
+import CreateUserData from './../../../components/StaffCreat/CreateUserData';
 
 const page = () => {
+  const onClick = () => {
+    console.log("createNewJobs")
+  }
   return (
-    <div>
-        <CreateUserData/>
-    </div>
+    <div><CreateUserData/></div>
   )
 }
 

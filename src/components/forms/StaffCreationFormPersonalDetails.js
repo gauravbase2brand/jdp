@@ -15,8 +15,8 @@ const StaffCreationFormPersonalDetails = () => {
   };
   return (
     <div>
-      <div className="container m-auto max-w-7xl rounded-lg bg-white md:p-6 p-3 shadow-sm">
-        <form>
+      <div className="container m-auto max-w-7xl ">
+      <h2 className="text-2xl font-bold">Personal Details</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 ">
             <InputCustom
               InputType="text"
@@ -99,7 +99,7 @@ const StaffCreationFormPersonalDetails = () => {
                 messageValue={message}
                 handleMessageChange={handleChange}
                 placeholderText="Enter message"
-                requiredHeight="150px"
+                requiredHeight="140px"
               />
             </div>
             <div>
@@ -129,15 +129,15 @@ const StaffCreationFormPersonalDetails = () => {
               selectOptionStatus={false}
               inputsize="large"
             />
-            <div className="flex items-center justify-end">
+            {/* <div className="flex items-center justify-end">
               <Button
                 uibutton="Next"
                 ButtonUi="m-0 rounded-full bg-blue-500 px-6 py-2 text-sm text-white hover:bg-blue-600"
                 PositionBtn="justify-end"
               />
-            </div>
+            </div> */}
           </div>
-        </form>
+       
       </div>
     </div>
   );

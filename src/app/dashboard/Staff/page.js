@@ -1,11 +1,11 @@
 import React from 'react'
-import StaffCreationForm from '../../../components/forms/StaffCreationForm'
+import StaffCreatAndPopop from './../../../components/StaffCreat/StaffCreatAndPopop';
+
 
 const page = () => {
   return (
     <div>
-
-        <StaffCreationForm/>
+<StaffCreatAndPopop/>
     </div>
   )
 }
