@@ -321,7 +321,7 @@ const menuItems = [
         ),
       },
       {
-        label: 'Staff',
+        label: 'staff',
         href: 'staff',
         icon: (
           <svg
@@ -435,7 +435,7 @@ const menuItems = [
         ),
       },
       {
-        label: 'Staff',
+        label: 'staff',
         href: '',
         icon: (
           <svg
@@ -690,7 +690,7 @@ const menuItems = [
         ),
       },
       {
-        label: 'Staff',
+        label: 'staff',
         href: '',
         icon: (
           <svg
@@ -814,7 +814,7 @@ const menuItems = [
         ),
       },
       {
-        label: 'Staff',
+        label: 'staff',
         href: '',
         icon: (
           <svg
