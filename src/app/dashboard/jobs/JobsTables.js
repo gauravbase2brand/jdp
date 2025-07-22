@@ -5,11 +5,13 @@ import ExpandableSearch from '@/components/ui/SearchJobs';
 import SelectOptionAnt from '@/components/ui/SelectOptionAnt';
 import { Tooltip } from 'antd';
 
+
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { FaTh, FaCogs, FaHandshake } from 'react-icons/fa';
+
 import { FiPlusCircle } from 'react-icons/fi';
 
+import ShortByPrice from '@/components/ui/ShortByPrice';
 const JobsTables = () => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [jobPopop, setjobPopop] = useState(true);
@@ -167,6 +169,7 @@ const handleClick =(tabname)=>{
 
 }
 
+
   return (
     <>
       {jobPopop ? (
@@ -192,10 +195,13 @@ const handleClick =(tabname)=>{
 
                   <ExpandableSearch />
                 </div>
-                <div className="mb-2 grid grid-cols-1 md:grid-cols-3 md:gap-3 gap-1 w-full lg:w-auto">
+                <div className="mb-2 grid grid-cols-1 md:grid-cols-3 md:gap-3 gap-1 w-full lg:w-auto items-center">
                   <SelectOptionAnt FilterInpur="Job Type" />
                   <SelectOptionAnt FilterInpur="Completion Status" />
-                  <SelectOptionAnt FilterInpur="Sort By" />
+                  
+              
+                  <ShortByPrice />
+
                 </div>
               </div>
              <div>

@@ -4,6 +4,8 @@ import { rootReducer } from './rootReducer';
 export const makeStore = () => {
   return configureStore({
     reducer: rootReducer,
+
+    
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {

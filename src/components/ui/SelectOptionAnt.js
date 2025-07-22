@@ -11,7 +11,6 @@ const onChange = value => console.log(`Selected ${value}`)
 const onSearch = value => console.log('Search query:', value)
 
 const SelectOptionAnt = ({ FilterInpur }) => {
-  const isSortBy = FilterInpur === 'Sort By'
 
   return (
     <div className="md:p-1 lg:w-auto w-full">
@@ -23,11 +22,7 @@ size='large'
         onChange={onChange}
         onSearch={onSearch}
         className="lg:w-40 w-full "                 
-        suffixIcon={
-          isSortBy
-            ? <MdOutlineSortByAlpha size={20} />
-            : undefined
-        }
+      
       >
         <Option value="jack" label="Jack">Jack</Option>
         <Option value="lucy" label="Lucy">Lucy</Option>
